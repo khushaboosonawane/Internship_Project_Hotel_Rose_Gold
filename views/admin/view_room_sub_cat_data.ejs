@@ -1,0 +1,70 @@
+<%- include("navbar.ejs") %>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-start">
+            <a href="/admin/add_sub_cat_data/<%= room_data[0].room_com_id %>"> <button class="btn btn-outline-success">Go To Back</button></a>
+           
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-responsive table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>update data</th>
+                        <th>srno</th>
+                        <th>Room Name</th>
+                        <th>Room Price</th>
+                        <th>Room Type</th>
+                        <th>Room Size</th>
+                        <th>Room Feature</th>
+                        <th>Room Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(room_data.length>0){ %>
+                        <% for(var i=0;i<room_data.length;i++){ %>
+                            <tr>
+                                <td>
+                                    <a href="/admin/edit_room_sub_cat_data/<%= room_data[i].room_id %>"
+                                        style="text-decoration: none;">
+                                        <button type="button" class="btn btn-outline-twitter btn-sm"
+                                          style="padding: 10px;text-align: center;">
+                                          <i class="ri-edit-box-line"></i>
+                                        </button>
+                                      </a>
+                                      <a href="/admin/delete_room_sub_cat_data?id=<%= room_data[i].room_id %>"
+                                        style="text-decoration: none;">
+                                        <button type="button" class="btn btn-outline-youtube btn-sm"
+                                          style="padding: 10px;text-align: center;"
+                                          onclick="return confirm('Are You Sure To Delete Data')">
+                                          <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                      </a>
+                                </td>
+                                <td><%= i+1 %></td>
+                                <td><%= room_data[i].room_name %></td>
+                                <td><%= room_data[i].room_price %></td>
+                                <td><%= room_data[i].room_type %></td>
+                                <td><%= room_data[i].room_size %></td>
+                                <td><img src="/upload_image/room_image/<%= room_data[i].room_image %>" alt=""></td>
+                                <td><%= room_data[i].room_feature %></td>
+                            </tr>
+                        <% } %>
+                        
+                    <% }else{ %>
+                        <tr>
+                            <td colspan="8" class="text-center">No Data Found</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>

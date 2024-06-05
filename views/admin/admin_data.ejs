@@ -1,0 +1,216 @@
+<%- include("navbar.ejs") %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+        <div>
+          <% if (successMessage) { %>
+            <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+              id="notification">
+              <%= successMessage %>
+            </div>
+            <% } %>
+              <script>
+                setTimeout(function () {
+                  // document.getElementById("notification").style.display = "none";
+                  $("#notification").fadeOut(2000);
+                }, 3000);
+              </script>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: -12px;">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card corona-gradient-card">
+            <div class="card-body py-0 px-0 px-sm-3">
+              <div class="row align-items-center" style="padding: 2px;">
+                <div class="col-4 col-sm-3 col-xl-2">
+
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <i class="ri-admin-line" style="font-size: 30px;"></i>
+
+                </div>
+                <div class="col-5 col-sm-7 col-xl-8 p-0">
+                  <h4 class="mb-1 mb-sm-0 text-dark"
+                    style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Admin Information</h4>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+
+              <!-- create table admin_data(ad_id integer primary key auto_increment,admin_name varchar(3000),admin_mobile varchar(11),admin_email varchar(30000),admin_img text,admin_password varchar(20000)); -->
+              <form class="form-sample" action="/admin/save_admin_data" enctype="multipart/form-data" method="post"
+                id="myform">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Admin Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="admin_name" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Admin Mobile</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" name="admin_mobile" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Admin Email</label>
+                      <div class="col-sm-9">
+                        <input type="email" class="form-control" name="admin_email" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Admin Designation</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="admin_desig" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Admin Password</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="admin_password" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Admin Image</label>
+                      <div class="col-sm-9">
+                        <input type="file" class="form-control" name="admin_img" required />
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="butt mr-2 my-4">Save</button>
+              </div>
+            </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <br><br>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Blog Information</h4>
+                </p>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th> Update Data </th>
+                        <th> SrNo </th>
+                        <th> Admin Name </th>
+                        <th> Admin Mobile </th>
+                        <th> Admin Email </th>
+                        <th> Admin Password </th>
+                        <th>Admin Designation</th>
+                        <th> Admin Image </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% if(admin_data.length>0){ %>
+                        <% for(var i=0;i<admin_data.length;i++){ %>
+
+                          <tr>
+                            <td>
+                              <a href="/admin/edit_admin_data/<%= admin_data[i].ad_id %>"
+                                style="text-decoration: none;">
+                                <button type="button" class="btn btn-outline-twitter"
+                                  style="padding: 10px;text-align: center;">
+                                  <i class="ri-edit-box-line"></i>
+                                </button>
+                              </a>
+                              <a href="/admin/delete_admin_data?id=<%= admin_data[i].ad_id %>"
+                                style="text-decoration: none;">
+                                <button type="button" class="btn btn-outline-youtube"
+                                  style="padding: 10px;text-align: center;"
+                                  onclick="return confirm('Are You Sure To Delete Data')">
+                                  <i class="ri-delete-bin-line"></i>
+                                </button>
+                              </a>
+
+                            </td>
+                            <td>
+                              <%= i+1 %>
+                            </td>
+                            <td>
+                              <%= admin_data[i].admin_name %>
+                            </td>
+                            <td>
+                                <%= admin_data[i].admin_mobile %>
+                              </td>
+                              <td>
+                                <%= admin_data[i].admin_email %>
+                              </td>
+                              <td>
+                                <%= admin_data[i].admin_password %>
+                              </td>
+                              <td>
+                                <%= admin_data[i].admin_desig %>
+                              </td>
+                            <td class="py-1">
+                                <img src="/upload_image/admin_image/<%= admin_data[i].admin_img %>" alt="image" />
+                            </td>
+                            
+                          </tr>
+
+                          <% } %>
+                            <% }else{ %>
+                              <tr style="text-align: center;">
+                                <td colspan="7">Data Not Found</td>
+                              </tr>
+                              <% } %>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+      
+    
+
+
+
+
+      <%- include("footer.ejs") %>

@@ -1,0 +1,121 @@
+<%- include("navbar.ejs") %>
+
+    <!-- Header Banner -->
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+        data-background="/img/business_banner.jpg"
+        style="background-attachment: fixed;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center caption mt-90">
+                    <h1>Bussiness</h1>
+                    <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b
+                            style="color: white;">/</b>Bussiness</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid bg-white">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2 class="text-centertext-dark mt-5" style="text-transform: uppercase;">Superior Business Hotel in
+                        a.Nagar</h2>
+                    <div class="business-h-row text-center" style="background-color: #ac6e7b;"></div>
+                    <p class=" mt-4 text-center pr-4 pl-4 business-para-line-height text-dark">Welcome to The Rose Gold
+                        Ahemadnagar, an excellent choice for business travellers seeking a relaxing and productive stay.
+                        Here, outstanding hospitality
+                        and immaculate services are combined to make it the best corporate hotel in Pune. The Rose Gold
+                        Hotel has made an identity for
+                        itself as one of the top business hotels in Pune thanks to its excellent location, cutting-edge
+                        amenities and committed employees. Let's
+                        examine in more detail why staying with us is the best option for corporates.</p>
+                </div>
+            </div>
+            <!-- element -->
+        </div>
+
+        <div class="container-fluid bg-white">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h2 class="text-centertext-dark mt-5" style="text-transform: uppercase;">Superior Amenities and
+                            Facilities</h2>
+                        <div class="business-h-row text-center" style="background-color: #ac6e7b;"></div>
+                        <span style="text-transform: uppercase;letter-spacing: 5px;">Rose Gold Hotel</span>
+                    </div>
+                </div>
+                <!-- element -->
+            </div>
+
+
+        </div>
+    </div>
+
+    <section class="business-main-bg-color mt-4"
+        style="background: linear-gradient(rgba(172,110,123,0.2),rgba(172,110,123,0.2)) ;">
+        <div class="container-fluid">
+            <div class="row">
+                <% for(var i=0;i<ami_data.length;i++){ %>
+                    <div class="col-12 col-md-4 p-5">
+                        <div class="card p-0">
+                            <div class="card-image">
+                                <img src="/upload_image/aminity_facility_image/<%= ami_data[i].ami_image %>" alt=""
+                                    style="height: 200px;width: 100%;object-fit: cover;">
+                            </div>
+                            <div class="card-text text-left text-dark">
+                                <h3 class="py-4" style="border-bottom: 1px solid black;">
+                                    <%= i+1 %>.<%= ami_data[i].ami_title %>
+                                </h3>
+                                <p style="text-wrap: wrap;" class="px-2 text-center">
+                                    <%= ami_data[i].ami_desc %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-12 col-md-12"></div>
+                <h2 class="text-center text-dark mt-5" style="text-transform: uppercase;">Why Choose The Rose Gold for
+                    Corporate Stays?</h2>
+                <div class="business-h-row text-center"
+                    style="background: linear-gradient(rgba(172,110,123,0.2),rgba(172,110,123,0.2)) ;"></div>
+                <div class="row">
+                    <div class="container-fluid mt-4">
+                        <div class="row">
+                            <% for(var i=0;i<why_choose_hotel.length;i++){ %>
+                                <div class="col-12 col-md-4 p-5">
+                                    <div class="card shadow p-2">
+                                        <div class="card-image">
+                                            <img src="/upload_image/why_choose_hotel/<%= why_choose_hotel[i].why_image %>"
+                                                style="height: 200px;width: 100%;object-fit: cover;" alt="">
+                                        </div>
+                                        <div class="card-text text-left  ">
+                                            <h5 class="text-center mt-4"><u>
+                                                    <%=why_choose_hotel[i].why_title %>
+                                                </u></h5>
+                                            <p class="text-center lh-lg mt-3 text-wrap text-dark text-dark">
+                                                <%= why_choose_hotel[i].why_desc %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <%- include("footer.ejs") %>

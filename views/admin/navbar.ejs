@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Rose Gold Hotel Admin Panel</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/admin/assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="/admin/assets/vendors/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="/admin/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="/admin/assets/vendors/owl-carousel-2/owl.carousel.min.css">
+  <link rel="stylesheet" href="/admin/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="/admin/assets/css/style.css">
+  <!-- End layout styles -->
+  <!-- <link rel="shortcut icon" href="/admin/assets/images/favicon.png" /> -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/favicon_package_v0.16 (1)/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon_package_v0.16 (1)/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon_package_v0.16 (1)/favicon-16x16.png">
+  <link rel="manifest" href="/icons/favicon_package_v0.16 (1)/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Remix icon cdn  -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="/"><img src="/img/logo.jpg" alt="logo"
+            style="height: 80px;width: 80px;margin-left: 40px;" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="/"><img src="/img/logo.jpg" alt="logo" /></a>
+      </div>
+      <ul class="nav">
+        <li class="nav-item profile">
+          <div class="profile-desc">
+            <div class="profile-pic">
+              <div class="count-indicator">
+                <img class="img-xs rounded-circle " src="/upload_image/admin_image/<%= admin_data[0].admin_img %>" alt="">
+                <span class="count bg-success"></span>
+              </div>
+              <div class="profile-name">
+                <h5 class="mb-0 font-weight-normal"><%= admin_data[0].admin_name %></h5>
+                <span><%= admin_data[0].admin_desig %></span>
+              </div>
+            </div>
+            <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+            <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+              aria-labelledby="profile-dropdown">
+              <a href="/admin/view_profile" class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-dark rounded-circle">
+                    <!-- <i class="mdi mdi-settings text-primary"></i> -->
+                    <i class="ri-user-settings-line text-primary"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <p class="preview-subject ellipsis mb-1 text-small">View Profile</p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="/admin/logout_admin" class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-dark rounded-circle">
+                    <i class="ri-logout-circle-r-line text-info"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <p class="preview-subject ellipsis mb-1 text-small">Log Out</p>
+                </div>
+              </a>
+              
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-category">
+          <span class="nav-link">Navigation</span>
+        </li>
+
+        <div class="gradient-border" id="nav-line"></div>
+
+        <li class="nav-item menu-items">
+
+          <a class="nav-link" href="/admin/">
+            <span class="menu-icon">
+              <i class="ri-restaurant-line"></i>
+            </span>
+            <span class="menu-title">Order Details</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+
+          <a class="nav-link" href="/admin/contact_info">
+            <span class="menu-icon">
+              <!-- <i class="ri-restaurant-line"></i> -->
+              <i class="ri-phone-line"></i>
+            </span>
+            <span class="menu-title">Contact Information</span>
+          </a>
+        </li>
+
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/basic_info">
+            <span class="menu-icon">
+              <!-- <i class="ri-info-i"></i> -->
+              <i class="ri-command-fill"></i>
+            </span>
+            <span class="menu-title">Website Basic <br> Information</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/hotel_owner_info">
+            <span class="menu-icon">
+              <!-- <i class="ri-info-i"></i> -->
+              <i class="ri-user-2-fill"></i>
+            </span>
+            <span class="menu-title">Hotel Owner <br> Information</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#home_page" aria-expanded="false" aria-controls="ui-basic">
+            <span class="menu-icon">
+              <i class="ri-home-2-line"></i>
+            </span>
+            <span class="menu-title">Home Page</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="home_page">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item d-flex">
+                <i class="ri-equalizer-line"></i>&nbsp;
+                <a class="nav-link" href="/admin/slider_data">Slider Data</a>
+              </li>
+              <li class="nav-item d-flex">
+                <i class="ri-command-fill"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/about">About Data</a>
+              </li>
+              <li class="nav-item d-flex">
+                <i class="ri-home-8-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/home_rooms">Rooms Data</a>
+              </li>
+              <li class="nav-item d-flex">
+                <i class="ri-netease-cloud-music-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/home_extra_service_features">Extra Service <br> Feature Data </a>
+              </li>
+              <li class="nav-item d-flex">
+                <i class="ri-video-chat-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/latest_video">Hotel Latest <br> Video </a>
+              </li>
+              <li class="nav-item d-flex">
+                <i class="ri-arrow-up-circle-fill"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/hotel_facility">Hotel Facilites</a>
+              </li>
+              <li class="nav-item d-flex">
+                <i class="ri-speak-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/testimonial">Testimonials</a>
+              </li>
+              <li class="nav-item d-flex">
+                <i class="ri-article-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/our_news">Our News</a>
+              </li>
+              <li class="nav-item d-flex">
+                <i class="ri-user-3-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/hotel_client">Hotel Client</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#hotel_discover_feature" aria-expanded="false" aria-controls="hotel_discover_feature">
+            <span class="menu-icon">
+              <i class="ri-medal-2-fill"></i>
+            </span>
+            <span class="menu-title">Hotel Discover <br> Feature</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="hotel_discover_feature">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item d-flex"> 
+                <i class="ri-drag-move-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/hotel_discover_feature">Hotel Discover</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-file-image-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/facility_images">Hotel Facilties Image</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#about_page" aria-expanded="false" aria-controls="hotel_discover_feature">
+            <span class="menu-icon">
+              <i class="ri-bubble-chart-fill"></i>
+            </span>
+            <span class="menu-title">About Page</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="about_page">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item d-flex"> 
+                <i class="ri-artboard-2-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/hotel_views">Hotel Views</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-bowl-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/about_dishes">Dishes</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-image-fill"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/about_gallery">About Gallery</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-group-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/team_member">Team Members</a>
+              </li>
+              
+             
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#offers" aria-expanded="false" aria-controls="hotel_discover_feature">
+            <span class="menu-icon">
+              <i class="ri-bard-line"></i>
+            </span>
+            <span class="menu-title">Offers</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="offers">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item d-flex"> 
+                <i class="ri-star-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/special_offer">Special Offers</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-star-smile-fill"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/offer_details">Offers</a>
+              </li>
+              
+             
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#food_wines" aria-expanded="false" aria-controls="hotel_discover_feature">
+            <span class="menu-icon">
+              <i class="ri-centos-line"></i>
+            </span>
+            <span class="menu-title">Categories</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="food_wines">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item d-flex"> 
+                <i class="ri-mini-program-fill text-primary"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/view_categories">View Categories</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/terms_condition">
+            <span class="menu-icon">
+              <i class="ri-input-cursor-move"></i>
+            </span>
+            <span class="menu-title">Terms And Condition</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/privacy_policy">
+            <span class="menu-icon">
+              <i class="ri-chat-private-fill"></i>
+            </span>
+            <span class="menu-title">Privacy & Policy</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#aminity_facility" aria-expanded="false" aria-controls="hotel_discover_feature">
+            <span class="menu-icon">
+              <i class="ri-shake-hands-fill"></i>
+            </span>
+            <span class="menu-title">Bussiness</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="aminity_facility">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item d-flex"> 
+                <i class="ri-hand-coin-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/aminity_facility">Aminites And Facilites</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-tailwind-css-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/why_choose_hotel">Why Choos Rose Gold</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/gallery_data">
+            <span class="menu-icon">
+              <i class="ri-gallery-line"></i>
+            </span>
+            <span class="menu-title">Gallery</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/blog">
+            <span class="menu-icon">
+              <i class="ri-live-line"></i>
+            </span>
+            <span class="menu-title">Blog</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/rewards">
+            <span class="menu-icon">
+              <i class="ri-award-line"></i>
+            </span>
+            <span class="menu-title">Rewards</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#directory" aria-expanded="false" aria-controls="hotel_discover_feature">
+            <span class="menu-icon">
+              <i class="ri-folder-line"></i>
+            </span>
+            <span class="menu-title">Directory</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="directory">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item d-flex"> 
+                <i class="ri-bowl-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/starters">Starters</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-bowl-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/salad">Salad</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-bowl-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/wine">Wine</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-bowl-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/breakfast">Breakfast</a>
+              </li>
+              <li class="nav-item d-flex"> 
+                <i class="ri-bowl-line"></i>
+                &nbsp;
+                <a class="nav-link" href="/admin/desert">Desert</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/career">
+            <span class="menu-icon">
+              <i class="ri-arrow-up-circle-line"></i>
+            </span>
+            <span class="menu-title">Career</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/contact_map">
+            <span class="menu-icon">
+              <i class="ri-map-pin-line"></i>
+            </span>
+            <span class="menu-title">Contact</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/admin_data">
+            <span class="menu-icon">
+              <i class="ri-admin-line"></i>
+            </span>
+            <span class="menu-title">Admin Details</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/admin/faq">
+            <span class="menu-icon">
+              <i class="ri-question-line"></i>
+            </span>
+            <span class="menu-title">FAQ</span>
+          </a>
+        </li>
+        
+
+      </ul>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo-mini" href="/"><img src="/img/logo.jpg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize"
+            onclick="change_size()">
+            <span class="mdi mdi-menu"></span>
+          </button>
+
+          <script>
+            var line = document.getElementById("nav-line");
+            display = 0;
+            function change_size() {
+
+              if (display == 1) {
+                line.style.display = 'block';
+                display = 0;
+              }
+              else {
+                line.style.display = "none"
+                display = 1;
+              }
+
+            }
+
+          </script>
+
+          <ul class="navbar-nav navbar-nav-right">
+
+
+            <!-- <li class="nav-item dropdown border-left">
+              <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown"
+                aria-expanded="false">
+                <i class="mdi mdi-email"></i>
+                <span class="count bg-success"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                aria-labelledby="messageDropdown">
+                <h6 class="p-3 mb-0">Messages</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="/admin/assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
+                    <p class="text-muted mb-0"> 1 Minutes ago </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="/admin/assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
+                    <p class="text-muted mb-0"> 15 Minutes ago </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <img src="/admin/assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
+                    <p class="text-muted mb-0"> 18 Minutes ago </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <p class="p-3 mb-0 text-center">4 new messages</p>
+              </div>
+            </li> -->
+            <li class="nav-item dropdown border-left">
+              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                data-toggle="dropdown">
+                <i class="mdi mdi-bell"></i>
+
+
+
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                aria-labelledby="notificationDropdown">
+                <h6 class="p-3 mb-0">Notifications</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+
+                  <div class="preview-item-content d-flex justify-content-between align-items-center"
+                    id="preview-item-content">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                    <% if (successMessage) { %>
+                      <p class="preview-subject mb-1" id="removedata">
+                        <%= successMessage %>
+                      </p>
+                      &nbsp;&nbsp;
+
+                      <button class="btn btn-primary" id="dismissdata">X</button>
+                      <% }else{ %>
+                        <p class="preview-subject mb-1" id="removedata">No Notification</p>
+                        &nbsp;&nbsp;
+
+                        <!-- <button class="btn btn-primary" id="dismissdata">X</button> -->
+
+
+
+                        <% } %>
+
+
+                          <script>
+                            $(document).ready(function () {
+                              $("#dismissdata").click(function () {
+                                $("#preview-item-content").empty();
+                              })
+                            })
+                            // $("#dismissdata").remove()
+                          </script>
+
+
+                  </div>
+                </a>
+
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                <div class="navbar-profile">
+                  <img class="img-xs rounded-circle" src="/upload_image/admin_image/<%= admin_data[0].admin_img %>" alt="">
+                  <p class="mb-0 d-none d-sm-block navbar-profile-name"><%= admin_data[0].admin_name %></p>
+                  <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                aria-labelledby="profileDropdown">
+                <h6 class="p-3 mb-0">Profile</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item" href="/admin/view_profile">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="ri-user-settings-line text-success"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject mb-1">View Profile</p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item" href="/admin/logout_admin">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-logout text-danger"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content" onclick="return confirm('  <%= admin_data[0].admin_name %> Are You Sure To Logout')">
+                    <p class="preview-subject mb-1">Log out</p>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-format-line-spacing"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">

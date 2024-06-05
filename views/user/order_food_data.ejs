@@ -1,0 +1,143 @@
+
+
+
+
+
+<%- include("navbar.ejs") %>
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="/img/about_header_banner.jpg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Booking</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>Booking</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <link rel="stylesheet" href="/contact_form/fonts/icomoon/style.css"> -->
+
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="/contact_form/css/bootstrap.min.css"> -->
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="/contact_form/css/style.css">
+
+
+    <div class="container mt-5" style="margin-top: 70px;">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="section-title">Booking Form</div>
+              <div class="section-line"></div>
+              <div class="section-subtitle">The Rose Gold Hotel</div>
+          </div>
+      </div>
+  </div>
+
+  <!-- create table order_food_data(cli_id integer primary key auto_increment,client_name varchar(50000),client_email varchar(50000),client_number varchar(11),dish_name text,dish_price decimal,order_status varchar(3000)) -->
+
+<!-- <div class="content"> -->
+    
+    <div class="container">
+      <div class="row align-items-stretch no-gutters contact-wrap" style="display: flex;flex-wrap: wrap;">
+        <div class="col-md-6">
+          <div class="form h-100">
+            <h2><%= order_data[0].dish_name %> Form</h2>
+            <br>
+            <form class="mb-5" method="post" action="/save_order_food_data" id="contactForm" name="contactForm">
+              <div class="row">
+                <div class="col-md-6 form-group mb-5">
+                  <label for="" class="col-form-label">Name *</label>
+                  <input type="text" class="form-control" name="client_name" id="name" placeholder="Your name" required>
+                </div>
+                <div class="col-md-6 form-group mb-5">
+                  <label for="" class="col-form-label">Email *</label>
+                  <input type="email" class="form-control" name="client_email" id="email"  placeholder="Your email" required>
+                </div>
+                <div class="col-md-6 form-group mb-5">
+                  <label for="" class="col-form-label">Number *</label>
+                  <input type="number" class="form-control" name="client_number" id="number"  placeholder="Your Phone Number" required>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group mb-5">
+                  <label for="" class="col-form-label">Food Name</label>
+                  <input type="text" class="form-control" name="dish_name" id="phone"  placeholder="Food Name" required value="<%= order_data[0].dish_name %>" readonly>
+                </div>
+                <div class="col-md-6 form-group mb-5">
+                  <label for="" class="col-form-label">Food Price</label>
+                  <input type="text" class="form-control" name="dish_price" id="company"  placeholder="Food Price" value="<%= order_data[0].dis_price %> RS" readonly>
+                </div>
+                
+                
+              </div>
+              <div class="row d-flex justify-content-around flex-wrap">
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-sm" id="inc" type="button" >+</button>
+                </div>
+                <div class="col-md-4 form-group mb-5">
+                    <input type="text" class="form-controltext-center" name="quantity" id="data"  placeholder="Food Quantity" value="1" readonly>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-danger btn-sm" id="dec" type="button">&nbsp;-&nbsp;</button>
+                </div>
+              </div>
+
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+              <script>
+                $(document).ready(function(){
+                    var a=0+1;
+                    
+                    $("#inc").click(function(){
+                        $("#data").val(a++);
+                    })
+                    $("#dec").click(function(){
+                        var data=$("#data").val()
+                        if(data<=0){
+                            $("#data").val(0)
+                        }
+                        
+                        else{
+                            $("#data").val(a--);
+                        }
+                    })
+                    
+                })
+
+              </script>
+
+              
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="submit" value=" Book <%= order_data[0].dish_name %>" class="btn btn-primary rounded-0 py-2 px-4">
+                  <span class="submitting"></span>
+                </div>
+              </div>
+            </form>
+
+          
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img src="/upload_image/about_dish_image/<%= order_data[0].dish_image %>" style="height: 50vh;width: 100%;object-fit: cover;" alt="">
+          <iframe src="<%= contact_map[0].con_link %>" width="550" height="520" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+        </div>
+      </div>
+    </div>
+
+  <!-- </div> -->
+  <br><br>
+   <!-- contact form  -->
+
+   <script src="/contact_form/js/jquery-3.3.1.min.js"></script>
+   <script src="/contact_form/js/popper.min.js"></script>
+   <script src="/contact_form/js/bootstrap.min.js"></script>
+   <script src="/contact_form/js/jquery.validate.min.js"></script>
+   <script src="/contact_form/js/main.js"></script>
+
+<%- include("footer.ejs") %>
+

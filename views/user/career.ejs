@@ -1,0 +1,51 @@
+<%- include("navbar.ejs") %>
+
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="3" data-background="/img/career_banner.jpeg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h5>Get in touch</h5>
+                <h1>Careers</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- Careers -->
+  <section class="positions section-padding" style="margin-top:-50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-60">
+
+                
+
+                <% for(var i=0;i<career_data.length;i++){ %>
+                    <div class="position text-left border border-secondary p-5 my-5">
+                        
+                        <div class="position-title"> <span class="text-left" style="font-weight: bold;font-size: 20px;">Job Position</span><span><%= career_data[i].job_title %></span></div>
+                        <div class="position-location"><span style="font-weight: bold;font-size: 20px;">Job Salary</span><%= career_data[i].job_salary %></div>
+                        <div class="position-time"><span style="font-weight: bold;font-size: 20px;">Job Minimum Age</span><%= career_data[i].job_age %></div>
+                        <div class="position-time"><span style="font-weight: bold;font-size: 20px;">Job Education</span><%= career_data[i].job_education %></div>
+                        <!-- <div class="position-icon"> -->
+                           
+                            <a href="<%= career_data[i].job_apply_link %>" target="_blank"> 
+                                <button class="book_now" style="position: relative;top: 30px;left: 10px;">Apply Now</button>
+                            </a>
+                        <!-- </div> -->
+                    </div>
+                <% } %>
+               
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-md-12">
+                <p><small>Please submit a resume and cover letter with compensation history to <b> <a href="mail:<%= hotel_data[0].hotel_email_id %>"><%= hotel_data[0].hotel_email_id %></a>.</b></small></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include("footer.ejs") %>

@@ -1,0 +1,109 @@
+<%- include("navbar.ejs") %>
+
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/spcial_offer_banner.jpeg" style="background-attachment: fixed;object-fit: cover;background-position: center center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1><%= special_offer_data[0].special_offer_name %></h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b><%= special_offer_data[0].special_offer_name %></h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Room Content -->
+<section class="rooms-page section-padding" data-scroll-index="1">
+    <div class="container">
+        <!-- project content -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title"><%= special_offer_data[0].special_offer_name %></div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+            <div class="col-md-6">
+                <h1><span style="color:#b1616c;"><i class="ri-flower-fill"></i></span> &nbsp;The Rose Gold Hotel</h1>
+                <%= special_offer_data[0].special_offer_description %>
+            </div>
+            <div class="col-md-5 offset-md-1">
+                <img src="/upload_image/special_offer_image/<%= special_offer_data[0].special_offer_image %>" style="max-width: 100%;max-height: 60vh;object-fit: cover;" alt="">
+            </div>
+            <div style="width: 100%;height: 0px;border: 1px solid black;margin: 30px auto;"></div>
+            <div class="col-md-6 my-5" style="margin-top: 50px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Check-in</h6>
+                        <ul class="list-unstyled page-list mb-30">
+                            <li>
+                                <div class="page-list-icon">
+                                     <span class="ti-check"></span>
+                                </div>
+                                <div class="page-list-text">
+                                    <p><%= special_offer_data[0].check_in_details %></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Check-out</h6>
+                        <ul class="list-unstyled page-list mb-30">
+                            <li>
+                                <div class="page-list-icon">
+                                     <span class="ti-check"></span>
+                                </div>
+                                <div class="page-list-text">
+                                    <p><%= special_offer_data[0].check_out_details %></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12">
+                        <h6>Special check-in instructions</h6>
+                        <p><%= special_offer_data[0].special_checkin_instruction %>.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>Pets</h6>
+                        <p><%= special_offer_data[0].pets %></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>Members</h6>
+                        <p><%= special_offer_data[0].allowed_person %></p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3 offset-md-1" style="margin-top: 50px;">
+                <h6>Amenities</h6>
+                <ul class="list-unstyled page-list mb-30">
+                    <li>
+                        <div class="page-list-icon"> <span class="flaticon-group"></span> </div>
+                        <div class="page-list-text">
+                            <p><%= special_offer_data[0].allowed_person %></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="page-list-icon"> <span class="flaticon-wifi"></span> </div>
+                        <div class="page-list-text">
+                            <p><%= special_offer_data[0].wifi_con %></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="page-list-icon"> <span class="flaticon-clock-1"></span> </div>
+                        <div class="page-list-text">
+                            <p><%= special_offer_data[0].room_size %> sqft room</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="page-list-icon"> <span class="flaticon-breakfast"></span> </div>
+                        <div class="page-list-text">
+                            <p><%= special_offer_data[0].breakfast %></p>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include("footer.ejs") %>

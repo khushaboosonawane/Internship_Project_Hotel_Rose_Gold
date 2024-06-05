@@ -1,0 +1,59 @@
+<%- include("navbar.ejs") %>
+<header class="room_header">
+
+    <div class="room_banner_image">
+
+        <div class="about_path">
+            <h1>Rooms Details</h1>
+            <span class="first_data"><a href="/">Home</a></span> <b style="color: white;font-size: 18px;"> / </b>
+            <span><%= rooms_data[0].room_name %></span>
+        </div>
+
+    </div>
+
+</header>
+<br><br>
+
+<!-- About -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row d-flex justify-content-between">
+            <div class="col-md-12">
+                <div class="section-title">Room Details</div>
+                <div class="section-line" style="width: 500px;" ></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+            
+          <br><br>
+            <div class="col col-md-5 animate-box about_image" data-animate-effect="fadeInUp" style="margin-top: 51px;">
+                <img src="/upload_image/home_room_image/<%=  rooms_data[0].rooms_image %>" alt="">
+            </div>
+            
+            <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                <!-- <div class="section-title">About</div> -->
+                <!-- <div class="section-subtitle" style="font-size: 20px;">The Rose Gold Hotel</div> -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <img src="/upload_image/website_logo/<%= hotel_data[0].hotel_logo %>" alt="" style="height: 150px;width: 150px;">
+                    </div>
+                    <p style="color: black;"> <%= about_data[0].about_description %></p>
+                </div>
+                <div class="row">
+                    <h4 style="display: inline-block;">Room Name &nbsp;&nbsp; : &nbsp;<span style="font-size: 20px;"><%= rooms_data[0].room_name %></span>  </h4> 
+                    <h4 style="display: inline-block;">Room Type &nbsp;&nbsp; : &nbsp;&nbsp;<span style="font-size: 20px;"><%= rooms_data[0].room_type %></span>  </h4>
+                    <h4 style="display: inline-block;">Room Price &nbsp;&nbsp; : &nbsp;&nbsp;<span style="font-size: 20px;"><%= rooms_data[0].room_price %>&#x20B9;</span>  </h4> 
+                </div>
+
+                
+                
+
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<br><br><br><br>
+
+<%- include("footer.ejs") %>

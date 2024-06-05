@@ -1,0 +1,48 @@
+<%- include("navbar.ejs") %>
+
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/reward_banner.jpg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Rewards</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>Rewards</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- News  -->
+<section class="news section-padding">
+    <div class="container">
+        <div class="row">
+            <% for(var i=0;i<reward_data.length;i++){ %>
+                <div class="col-md-4 my-5">
+                    <div class="item">
+                            <div class="position-re o-hidden">
+                                 <img src="/upload_image/reward_image/<%= reward_data[i].reward_image %>" alt="" style="height: 300px;width: 100%;object-fit: cover;">
+                                <div class="date">
+                                    <span><%= reward_data[i].rew_date %></span>
+                                </div>
+                            </div>
+                            <div class="con text-center" style="background: linear-gradient(rgba(177,97,108,0.2),rgba(177,97,108,0.2));"> 
+                                <span class="category">
+                                    <h1 class="text-white"><%= i+1 %></h1>
+                                      <p class="text-dark"><%= reward_data[i].rew_title %></p>
+                                </span>
+                                <p class="text-dark">
+                                    <%= reward_data[i].rew_desc %>
+                                </p>
+                            </div>
+                        </div>
+                </div>
+            <% } %>
+           
+        </div>
+    </div>
+</section>
+
+<br><br>
+
+<%- include("footer.ejs") %>

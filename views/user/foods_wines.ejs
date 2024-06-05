@@ -1,0 +1,149 @@
+<%- include("navbar.ejs") %>
+
+   <!-- Header Banner -->
+   <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="/img/food_banner.jpeg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Food & Wines</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>Food & Wines</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- food wines -->
+<section class="rooms1 section-padding" data-scroll-index="1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Food</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <% for(var i=0;i<about_dishes.length;i++){ %>
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="position-re o-hidden"> 
+                            <img src="/upload_image/about_dish_image/<%= about_dishes[i].dish_image %>" alt="" style="height: 350px;width: 100%;object-fit: cover;"> 
+                        </div> 
+                        <span class="category"><a href="/order_food_data/<%= about_dishes[i].dis_id %>">Book</a></span>
+                        <div class="con text-center" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
+                            <h6><%= about_dishes[i].dis_price %> RS / <%= about_dishes[i].dis_fea_one %> </h6>
+                            <h5><%= about_dishes[i].dish_name %></h5>
+                            
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+           
+        </div>
+    </div>
+</section>
+
+<!-- food wines -->
+<section class="rooms1 section-padding" data-scroll-index="1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">wines</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+        </div>
+        <div class="row">
+            <% for(var i=0;i<wines_data.length;i++){ %>
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="position-re o-hidden"> 
+                            <img src="/upload_image/wine_images/<%= wines_data[i].wines_image %>" alt="" style="height: 350px;width: 100%;object-fit: cover;"> 
+                        </div> 
+                        <span class="category"><a href="/book_wines/<%= wines_data[i].wines_id %>">Book</a></span>
+                        <div class="con text-center" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
+                            <h6><%= wines_data[i].wines_price %> RS / <%= wines_data[i].wines_feature %> </h6>
+                            <h5><%= wines_data[i].wines_name %></h5>
+                            
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+           
+        </div>
+    </div>
+</section>
+
+ <!-- Rooms -->
+ <section class="rooms2 section-padding bg-cream" data-scroll-index="1">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+                <% for(var i=0;i<food_data.length;i++){ %>
+                    <% if((i%2)==0){ %>
+                        <div class="rooms2">
+                            <figure>
+                                <img src="/upload_image/food_images/<%= food_data[i].food_image %>"  alt="" class="img-fluid">
+                            </figure>
+                            <div class="caption padding-left">
+                                <h3><%= food_data[i].food_price %> Rs/- <span><%= food_data[i].food_type %></span></h3>
+                                <h4><%= food_data[i].food_name %></h4>
+                                <h5>Quality : <%= food_data[i].food_veg_nonveg %></h5>
+                                <p>
+                                    <%= food_data[i].food_description %>
+                                </p>
+                                <ol type="1">
+                                    <li> <b>1</b>. &nbsp;<%= food_data[i].food_feature_one %></li>
+                                    <li><b>2</b>.&nbsp;<%= food_data[i].food_feature_two %></li>
+                                    <li><b>3</b>. &nbsp;<%= food_data[i].food_feature_three %></li>
+                                </ol>
+                                
+                                <!-- <hr class="border-2">
+                                <div class="info-wrapper">
+                                    <button class="button-75" role="button"><span class="text">Order</span></button>
+                                </div> -->
+                            </div>
+                        </div>
+                    <% }else{ %>
+                        <div class="rooms2 left">
+                            <figure><img src="/upload_image/food_images/<%= food_data[i].food_image %>" alt="" class="img-fluid" style="height: 400px;width: 100%;object-fit: cover;"></figure>
+                            <div class="caption padding-left">
+                                <h3><%= food_data[i].food_price %> Rs/- <span><%= food_data[i].food_type %></span></h3>
+                                <h4><%= food_data[i].food_name %></h4>
+                                <p><%= food_data[i].food_description %></p>
+                                <div class="row room-facilities">
+                                    <div class="col-md-4">
+                                        <ul>
+                                            <li><b>1</b>.&nbsp;<%= food_data[i].food_feature_one %></li>
+                                            <li><b>2</b>.&nbsp;<%= food_data[i].food_feature_two %></li>
+                                            <li><b>3</b>.&nbsp;<%= food_data[i].food_feature_three %></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- <hr class="border-2">
+                                <div class="info-wrapper">
+                                    <button class="button-75" role="button"><span class="text">Order</span></button>
+                                </div> -->
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                    
+                <% } %>
+                
+               
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+ 
+
+
+<%- include("footer.ejs") %>

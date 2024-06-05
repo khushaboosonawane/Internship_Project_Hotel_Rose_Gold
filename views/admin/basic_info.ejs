@@ -1,0 +1,157 @@
+<%- include('navbar.ejs') %>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+    <div>
+      <% if (successMessage) { %>
+        <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;" id="notification">
+          <%= successMessage %>
+        </div>
+      <% } %>
+    
+      <script>
+        setTimeout(function(){
+           // document.getElementById("notification").style.display = "none";
+           $("#notification").fadeOut(2000);
+       }, 3000);
+    </script>
+  </div>
+</div>
+
+<div class="row" style="margin-top: -12px;">
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card corona-gradient-card">
+        <div class="card-body py-0 px-0 px-sm-3">
+          <div class="row align-items-center" style="padding: 2px;">
+            <div class="col-4 col-sm-3 col-xl-2">
+              
+              <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+              <!-- <i class="ri-information-line" style="font-size: 30px;"></i> -->
+              <i class="ri-command-fill" style="font-size: 30px;"></i>
+
+            </div>
+            <div class="col-5 col-sm-7 col-xl-8 p-0">
+              <h4 class="mb-1 mb-sm-0 text-dark" style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Website Basic Information</h4>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          
+
+          <!-- create table basic_information(bid integer primary key auto_increment,hotel_logo text,about_title varchar(1000),about_description text,hotel_address text,hotel_contact_number varchar(12),hotel_email_id text,instagram_link text,twitter_link text,youtube_link text,facebook_link text,whatsapp_link text); -->
+
+
+          
+          <form class="forms-sample" action="/admin/update_basic_info" method="post" enctype="multipart/form-data" id="myform">
+            <div class="form-group row">
+              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">About Title</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Enter About Title" name="about_title" value="<%= hotel_data[0].about_title %>" required>
+              </div>
+            </div>
+           
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">About Description</label>
+              <div class="col-sm-9">
+                <textarea name="about_description" id="" class="form-control" placeholder="Enter About Description Description" required><%= hotel_data[0].about_description %></textarea>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Hotel Address</label>
+              <div class="col-sm-9">
+                <textarea name="hotel_address" id="" class="form-control" placeholder="Enter Hotel Address" required><%= hotel_data[0].hotel_address %></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputMobile" class="col-sm-3 col-form-label">Hotel Contact Number</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" id="exampleInputMobile" placeholder="Enter Hotel Contact Number" name="hotel_contact_number" value="<%= hotel_data[0].hotel_contact_number %>" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Hotel Email Id</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="exampleInputPassword2" placeholder="Enter Hotel Email" name="hotel_email_id" value="<%= hotel_data[0].hotel_email_id %>" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Hotel Twitter Account</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="linkInput1" placeholder="Enter Hotel Twitter Account" name="twitter_link" value="<%= hotel_data[0].twitter_link %>" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Hotel Instagram Account</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="linkInput2" placeholder="Enter Hotel Instagram Account" name="instagram_link" value="<%= hotel_data[0].instagram_link %>" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Hotel Facebook Account</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="linkInput3" placeholder="Enter Hotel Facebook Account" name="facebook_link" value="<%= hotel_data[0].facebook_link %>" required>
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Hotel Youtube Link</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="linkInput4" placeholder="Enter Hotel Youtube Link" name="youtube_link" value="<%= hotel_data[0].youtube_link %>" required>
+              </div>
+            </div>
+            
+
+            <div class="row">
+              <div class="col-md-3 my-3">
+                Select Logo Image
+              </div>
+              
+              <div class="col-md-5">
+                <div class="form-group row d-flex justify-content-around">
+                  <div class="col-sm-12">
+                    <input type="file" class="form-control" id="exampleInputConfirmPassword2" name="hotel_logo">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+
+                <img src="/upload_image/website_logo/<%= hotel_data[0].hotel_logo %>" alt="logo_img" style="height: 100px;width: 100px;">
+
+              </div>
+            </div>
+            
+
+            <div class="col-md-12 text-center">
+              <button type="submit" class="butt mr-2 my-4">Update</button>
+            </div>
+            
+            
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  
+
+  
+
+<%- include("footer.ejs") %>

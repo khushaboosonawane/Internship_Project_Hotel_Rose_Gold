@@ -1,0 +1,62 @@
+<%- include("navbar.ejs") %>
+
+   <!-- Header Banner -->
+   <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/metting_events.banner.jpeg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Metting & Events</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>Metting & Events</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   
+    <br><br><br>
+
+    <div class="container-fluid bg-white">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <h2 class="text-centertext-dark mt-5" style="text-transform: capitalize;">Event Hall
+                    </h2>
+                    <div class="Event-h-row text-center"
+                        style="background: linear-gradient(rgba(208,124,131,0.6),rgba(208,124,131,0.6));height: 0px;"></div>
+                    <p class="text-dark text-dark mt-2" style="text-transform: uppercase;letter-spacing: 6px;"> The Rose Gold </p>
+                </div>
+            </div>
+            <br><br>
+            <div class="container-fluid">
+                <div class="row">
+                    <% for(var i=0;i<event_hall.length;i++){ %>
+                        <div class="col-12 col-md-4 col-sm-6 p-4">
+                            <div class="event-card">
+                                <img src="/upload_image/event_hall_image/<%= event_hall[i].event_hall_image %>" style="height: 400px;width: 100%;object-fit: cover;">
+                                <div class="event-card__content"
+                                    style="background: linear-gradient(rgba(208,124,131,0.4),rgba(208,124,131,0.4));color: white;">
+                                    <p class="event-card__title text-center text-white">
+                                        <%= event_hall[i].event_hall_name %> <br>
+                                        <%= event_hall[i].event_hall_price %> Rs/-
+                                    </p>
+
+                                    <p class="event-card__description p-3 text-white text-center" style="text-wrap: wrap;overflow: hidden;">
+                                        <%= event_hall[i].event_hall_feature %>
+                                    </p>
+                                    <a href="/book_metting_events/<%= event_hall[i].event_hall_id %>">
+                                        <button class="btn text-white text-center" style="background-color: black;">Book Now</button>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <% } %>
+                           
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include("footer.ejs") %>

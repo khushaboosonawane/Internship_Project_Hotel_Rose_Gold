@@ -1,0 +1,86 @@
+<%- include("navbar.ejs") %>
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed mb-5" data-overlay-dark="4" data-background="/img/special_offer_booking.jpeg" style="background-attachment: fixed;object-fit: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Booking</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b><%= offer_data[0].offer_name %></h5>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+<div class="container mt-5" style="margin-top: 70px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title">Booking Form</div>
+            <div class="section-line"></div>
+            <div class="section-subtitle">The Rose Gold Hotel</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 shadow p-5">
+                <h2 class="mb-4">
+                    <!-- Hotel Booking  -->
+                   <%= offer_data[0].offer_name %> Book Form</h2>
+            
+                <form action="/save_offer_client_data" method="post">
+                  <div class="mb-2">
+                    <label for="name" class="form-label text-dark">Name:</label>
+                    <input type="text" class="form-control" id="name" name="offer_client_name" required placeholder="Enter Your Name">
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="email" class="form-label text-dark">Email:</label>
+                    <input type="email" class="form-control" id="email" name="offer_client_email" required placeholder="Enter Your Email"> 
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label text-dark">Phone Number:</label>
+                    <input type="number" class="form-control" id="email" name="offer_client_number" placeholder="Enter Your Phone Number"> 
+                  </div>
+                  <div class="mb-3">
+                    <label for="checkin" class="form-label text-dark">Check-in Date:</label>
+                    <input type="date" class="form-control" id="checkin" name="client_checkin" required>
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="checkout" class="form-label text-dark">Check-out Date:</label>
+                    <input type="date" class="form-control" id="checkout" name="client_checkout" required>
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="email" class="form-label text-dark">Hall Name:</label>
+                    <input type="text" class="form-control" id="email" name="offer_hall_name" required value="<%= offer_data[0].offer_name %>" placeholder="Enter Your Email" readonly> 
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="email" class="form-label text-dark">Hall Price:</label>
+                    <input type="number" class="form-control" id="email" name="offer_hall_price" required value="<%= offer_data[0].offer_price %>" placeholder="Enter Special Offer price" readonly> 
+                  </div>
+            
+                  
+                  <!-- <div class="mb-3">
+                    <label for="roomtype" class="form-label">Room Type:</label>
+                    <select class="form-select" id="roomtype" name="roomtype" required>
+                      <option value="standard">Standard Room</option>
+                      <option value="deluxe">Deluxe Room</option>
+                      <option value="suite">Suite</option>
+                    </select>
+                  </div> -->
+                  <br><br>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Book Now</button>
+                  </div>
+            
+                  
+                </form>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<%- include("footer.ejs") %>

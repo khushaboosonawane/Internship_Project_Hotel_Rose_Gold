@@ -1,0 +1,96 @@
+<%- include("navbar.ejs") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-end">
+            <a href="/admin/add_category">
+                <button class="btn btn-outline-success">Add Category</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered text-center">
+                <thead>
+                  <tr>
+                    <th> Update Data </th>
+                    <th> SrNo </th>
+                    <th> Category Name </th>
+                    <th> Category Description </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(cat_data.length>0){ %>
+                    <% for(var i=0;i<cat_data.length;i++){ %>
+            
+                      <tr>
+                        <% if(cat_data[i].cat_id <= 4 ){ %>
+                            <td>
+                                <a href="/admin/edit_cat_data/<%= cat_data[i].cat_id %>"
+                                  style="text-decoration: none;">
+                                  <button type="button" class="btn btn-outline-twitter btn-sm"
+                                    style="padding: 8px;text-align: center;">
+                                    <i class="ri-edit-box-line"></i>
+                                  </button>
+                                </a>
+                                <a href="/admin/add_sub_cat_data/<%= cat_data[i].cat_id %>"
+                                  style="text-decoration: none;">
+                                  <button type="button" class="btn btn-outline-success btn-sm"
+                                    style="padding: 8px;text-align: center;"
+                                    onclick="return confirm('Are You Sure To Add Subcategory')">
+                                    <i class="ri-add-line"></i>
+                                  </button>
+                                </a>
+      
+                              </td>
+                        <% }else{ %>
+                            <td>
+                                <a href="/admin/edit_cat_data/<%= cat_data[i].cat_id %>"
+                                    style="text-decoration: none;">
+                                    <button type="button" class="btn btn-outline-twitter btn-sm"
+                                      style="padding: 8px;text-align: center;">
+                                      <i class="ri-edit-box-line"></i>
+                                    </button>
+                                  </a>
+                                <a href="/admin/delete_cat/<%= cat_data[i].cat_id %>">
+                                    <button class="btn btn-outline-danger">delete</button>
+                                </a>
+                            </td>
+                            
+                        <% } %>
+                        
+                        <td>
+                          <%= i+1 %>
+                        </td>
+                        <td>
+                          <%= cat_data[i].cat_name %>
+                        </td>
+                        <td>
+                          <%= cat_data[i].cat_desc %>
+                        </td>
+                      </tr>
+
+                      <% } %>
+                        <% }else{ %>
+                          <tr style="text-align: center;">
+                            <td colspan="6">Data Not Found</td>
+                          </tr>
+                          <% } %>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<%- include("footer.ejs") %>

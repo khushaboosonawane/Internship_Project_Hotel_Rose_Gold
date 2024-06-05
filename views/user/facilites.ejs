@@ -1,0 +1,105 @@
+<%- include("navbar.ejs") %>
+
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/facility_service.jpg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Facilties</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color:#d1ae6f;">/</b>Facilties</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Services -->
+<section class="services section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Hotel Discovers</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">Our Services</div>
+                
+            </div>
+        </div>
+        <% for(var i=0;i<hotel_discover_feature.length;i++){ %>
+            <% if( (i%2) == 0){ %>
+                <div class="row">
+                    <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                        <div class="img left">
+                           <img src="/upload_image/hotel_discover_feature/<%= hotel_discover_feature[i].hot_image %>" alt="res_img">
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 bg-cream valign animate-box" data-animate-effect="fadeInRight">
+                        <div class="content">
+                            <div class="cont text-left">
+                                
+                                <h4><%= hotel_discover_feature[i].hot_subtitle %></h4>
+                                <p><%= hotel_discover_feature[i].hot_description %></p>
+                                <div> 
+                                    <a href="/dis_feature_data/<%= hotel_discover_feature[i].hot_id %>"> 
+                                        <button class="book_now" style="position: relative;top: 0px;left: 10px;">Learn More</button>
+                                    </a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }else{ %>
+                <div class="row">
+                    <div class="col-md-6 bg-cream p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <h4><%= hotel_discover_feature[i].hot_subtitle %></h4>
+                                <p><%= hotel_discover_feature[i].hot_description%></p>
+                                <div> 
+                                    <a href="/dis_feature_data/<%= hotel_discover_feature[i].hot_id %>"> 
+                                        <button class="book_now" style="position: relative;top: 0px;left: 10px;">Learn More</button>
+                                    </a>
+                                 </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
+                        <div class="img">
+                            <a href="spa-wellness.html"><img src="/upload_image/hotel_discover_feature/<%= hotel_discover_feature[i].hot_image %>" alt="res_img"></a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+        
+    </div>
+</section>
+    <!-- Facilties -->
+<section class="facilties section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Hotel Facilities</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">Our Services</div>
+                
+            </div>
+        </div>
+        <div class="row">
+
+            <% for(var i=0;i<hotel_facility_data.length;i++){ %>
+                <div class="col-md-4 text-center" >
+                    <div class="single-facility animate-box" data-animate-effect="fadeInUp" style="border-radius: 10px;">
+                        <!-- <span class="flaticon-world"></span> -->
+                        <span  class="single-facility-number"><%= i+1 %></span>
+                        <h5><%= hotel_facility_data[i].fac_title %></h5>
+                        <p><%= hotel_facility_data[i].fac_description %></p>
+                    </div>
+                </div>
+            <% } %>
+            
+        </div>
+    </div>
+</section>
+<%- include("footer.ejs") %>

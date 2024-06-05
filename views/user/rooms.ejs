@@ -1,0 +1,147 @@
+<%- include("navbar.ejs") %>
+
+    <!-- Header Banner -->
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/rooms_banner_image.jpeg" style="background-attachment: fixed;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center caption mt-90">
+                    <h1>Rooms</h1>
+                    <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>Rooms</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+
+
+
+<!-- Rooms -->
+<section class="rooms1 section-padding bg-cream" data-scroll-index="1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Special Rooms</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme">
+                    <% for(var i=0;i<room_data.length;i++){ %>
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="/upload_image/room_image/<%= room_data[i].room_image %>" alt="" style="height: 300px;width: 100%;object-fit: cover;"> </div> <span class="category"><a href="/book_room/<%= room_data[i].room_id %>">Book</a></span>
+                            <div class="con">
+                                <h6><a href="room-details.html"><%= room_data[i].room_price %>.Rs / <%= room_data[i].room_type %></a></h6>
+                                <h5><%= room_data[i].room_name %></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-12 text-white" style="position: relative;top: 7px;text-wrap: wrap;">
+                                        <%= room_data[i].room_feature %>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Rooms -->
+<section class="rooms1 section-padding" data-scroll-index="1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Rooms</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+        </div>
+        <!-- <div class="row d-flex">
+            <div class="col-md-4">
+                <div class="search-box">
+                    <button class="btn-search"><i class="ri-search-line"></i></button>
+                    <input type="text" class="input-search" style="color: black;" placeholder="Search Rooms...">
+                </div>
+                <div>
+                    <span class="lead">Search Here..</span>
+                </div>
+            </div>
+        </div> -->
+
+        <br><br>
+        <div class="row">
+            <% for(var i=0;i<room_data.length;i++){ %>
+            <div class="col-md-4">
+                    <div class="item">
+                        <div class="position-re o-hidden"> 
+                            <img src="/upload_image/room_image/<%= room_data[i].room_image %>" alt="" style="height: 400px;width: 100%;object-fit: cover;"> 
+                        </div> 
+                        <span class="category">
+                            <a href="/book_room/<%= room_data[i].room_id %>">Book</a>
+                        </span>
+                        <div class="con">
+                            <h6><%= room_data[i].room_price %> .Rs / <%= room_data[i].room_type %></a></h6>
+                            <h5><%= room_data[i].room_name %></h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-12 text-white p-4" style="background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));width: 100%;height: auto;">
+                                   <%= room_data[i].room_feature %>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <% } %>
+                
+           
+        </div>
+    </div>
+</section>
+<!-- Rooms -->
+<section class="rooms1 section-padding" data-scroll-index="1">
+    <div class="container">
+        <div class="row">
+            <% for(var i=0;i<3;i++){ %>
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="position-re o-hidden" style="border-radius: 10px;"> 
+                            <img src="/upload_image/home_room_image/<%= home_room_data[i].rooms_image %>" alt="" style="height: 500px;width: 100%;object-fit: cover;"> 
+                        </div> 
+                        <span class="category"><a href="/book_other_room/<%= home_room_data[i].room_id %>">Book</a></span>
+                        <div class="con">
+                            <h6><a href="/room_details/<%= home_room_data[i].room_id %>"><%= home_room_data[i].room_price %> &#x20B9; / <%= home_room_data[i].room_type %></a></h6>
+                            <h5><a href="/room_details/<%= home_room_data[i].room_id %>"><%= home_room_data[i].room_name %></a> </h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                
+                                <div class="col col-md-12 text-start">
+                                    <div class="permalink">
+                                        <!-- <a href="room-details.html">Details <i class="ti-arrow-right"></i></a> -->
+                                        <a href="/room_details/<%= home_room_data[i].room_id %>"> 
+                                            <button class="book_now" style="position: relative;top: 10px;left: 10px;">Details <i class="ti-arrow-right"></i> </button>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            
+
+            
+        </div>
+    </div>
+</section>
+
+<%- include("footer.ejs") %>

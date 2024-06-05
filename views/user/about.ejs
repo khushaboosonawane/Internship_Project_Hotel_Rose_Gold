@@ -1,0 +1,430 @@
+<%- include("navbar.ejs") %>
+
+
+    <!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/about_header_banner.jpg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>About</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>About</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- About -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">About</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+            <div class="col-md-6 mb-30 mt-5 animate-box" data-animate-effect="fadeInUp">
+                <h1><span style="color:#b1616c;"><i class="ri-flower-fill"></i></span> &nbsp;The Rose Gold Hotel</h1>
+                <p style="font-size: 18px;"><%= about_data[0].about_description %></p>
+                
+                
+            </div>
+            <div class="col col-md-3 animate-box about_image" data-animate-effect="fadeInUp">
+                <img src="/upload_image/about_images/<%= about_data[0].about_first_image %>" alt="" class="mt-90 mb-30">
+            </div>
+            <div class="col col-md-3 animate-box about_image" data-animate-effect="fadeInUp">
+                <img src="/upload_image/about_images/<%= about_data[0].about_second_image %>" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<br><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title">Hotel Views</div>
+            <div class="section-line"></div>
+            <div class="section-subtitle">The Rose Gold Hotel</div>
+        </div>
+    </div>
+</div>
+
+    <section class="about_card">
+        <div class="warpper1">
+            <% for(var i=0;i<hotel_views.length;i++){ %>
+                <div class="card1 col-md-4">
+                    <img src="/upload_image/hotel_view_image/<%= hotel_views[i].hotel_view_image %>" alt="" class="img-fluid">
+                    <div class="info">
+                        <h1 class="text-white"><%= hotel_views[i].hotel_view_title %></h1>
+                        <p class="text-white" style="text-wrap: wrap;font-size: 18px;">
+                           <%= hotel_views[i].hotel_view_description %>
+                        </p>
+    
+                    </div>
+                </div>
+            <% } %>
+            
+        </div>
+
+    </section>
+    <br><br><br>
+    <!-- <section>
+
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-md-12">
+                    <div class="section-title">Dishes</div>
+                    <div class="section-line"></div>
+                    <div class="section-subtitle">The Rose Gold Hotel</div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="content">
+                        <div class="indic">
+                            <span class="indic_btn active_1"></span>
+                            <span class="indic_btn"></span>
+                            <span class="indic_btn"></span>
+                            <span class="indic_btn"></span>
+                        </div>
+                        <div class="test_about">
+                            <div class="slide-row" id="slide_data">
+                                <div class="slide-col">
+                                    <div class="user-text">
+                                        <h3 style="color: black;font-weight: bold;">Chole Bhature</h3>
+                                        <p class="text-white text-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Maiores enim dolor at iure quaerat fuga, temporibus voluptates ad odit
+                                            repudiandae, distinctio hic aliquam eius? Corrupti dolor ducimus veniam
+                                            commodi quis?</p>
+
+                                        
+                                    </div>
+                                    <div class="user-image1">
+                                        <img src="/img/dishes/dish_1.jpg" alt="" class="img-dish">
+                                    </div>
+                                </div>
+
+                                <div class="slide-col">
+                                    <div class="user-text">
+                                        <h3 style="color: black;font-weight: bold;">Biryani</h3>
+                                        <p class="text-white text-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Maiores enim dolor at iure quaerat fuga, temporibus voluptates ad odit
+                                            repudiandae, distinctio hic aliquam eius? Corrupti dolor ducimus veniam
+                                            commodi quis?</p>
+                                    </div>
+                                    <div class="user-image">
+                                        <img src="/img/dishes/dish_2.jpg" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+
+                                <div class="slide-col">
+                                    <div class="user-text">
+                                        <h3 style="color: black;font-weight: bold;">Panner 65</h3>
+                                        <p class="text-white text-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Maiores enim dolor at iure quaerat fuga, temporibus voluptates ad odit
+                                            repudiandae, distinctio hic aliquam eius? Corrupti dolor ducimus veniam
+                                            commodi quis?</p>
+                                    </div>
+                                    <div class="user-image">
+                                        <img src="/img/dishes/Dosa.jpg" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+
+                                <div class="slide-col">
+                                    <div class="user-text">
+                                        <h3 style="color: black;font-weight: bold;">Shahi Panner</h3>
+                                        <p class="text-white text-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Maiores enim dolor at iure quaerat fuga, temporibus voluptates ad odit
+                                            repudiandae, distinctio hic aliquam eius? Corrupti dolor ducimus veniam
+                                            commodi quis?</p>
+                                    </div>
+                                    <div class="user-image">
+                                        <img src="/img/dishes/Shahi-Paneer-1.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+     <!-- Testiominals -->
+    
+     <section class="testimonials">
+        <div class="background bg-img bg-fixed section-padding pb-0" style="background:linear-gradient(37deg, rgba(182,107,121,1) 41%, rgba(210,174,107,1) 82%);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center my-4">
+                            <i class="star-rating text-white"></i>
+                            <i class="star-rating text-white"></i>
+                            <i class="star-rating text-white"></i>
+                            <i class="star-rating text-white"></i>
+                            <i class="star-rating text-white"></i>
+                        </div>
+                        <div class="section-title">Dishes</div>
+                        <div class="section-line" style="border: 1px solid black;"></div>
+                        <div class="section-subtitle text-white">The Rose Gold Hotel</div>
+                    </div>
+
+                    <div class="col-md-8 offset-md-2">
+                        <div class="testimonials-box">
+                            <div class="owl-carousel owl-theme">
+
+                                <% for(var i=0;i<about_dishes.length;i++){ %>
+                                    <div class="item d-flex justify-content-center align-items-center">
+                                        <!-- <span class="quote"><img src="img/quot.png" alt=""></span> -->
+                                        <img src="/upload_image/about_dish_image/<%= about_dishes[i].dish_image %>" style="max-width: 50%;height: 60vh;object-fit: cover;" alt="" class="img-rounded">
+                                        <div class="info d-flex justify-content-around">
+                                            
+                                               
+                                            <div class="cont"> 
+                                                
+                                                <h3 class="text-white"><%= i+1 %> . <%= about_dishes[i].dish_name %></h3>
+                                                 <span class="text-white lead">
+                                                    <ul class="text-center d-flex flex-column justify-content-center ">
+                                                        <li>
+                                                            <span class="lead py-2" style="font-size: 20px;">
+                                                                <i class="ri-restaurant-2-line" style="font-size: 20px;color: black;"></i> .
+                                                                <%= about_dishes[i].dis_fea_one %>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="lead py-2" style="font-size: 20px;">
+                                                                <i class="ri-restaurant-2-line" style="font-size: 20px;color: black;"></i> .
+                                                                <%= about_dishes[i].dis_fea_two %>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="lead py-2" style="font-size: 20px;">
+                                                                <i class="ri-restaurant-2-line" style="font-size: 20px;color: black;"></i> .
+                                                                <%= about_dishes[i].dis_fea_three %>
+                                                            </span>
+                                                        </li>
+                                                    
+                                                    </ul>
+                                                </span>
+                                                <br>
+                                                 <span style="font-size: 25px;"> Only <%= about_dishes[i].dis_price %>&#x20B9; &nbsp;&nbsp;/-</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                <% } %>
+                            
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+
+    <!-- Image Gallery -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">Gallery</div>
+                    <div class="section-line"></div>
+                    <div class="section-subtitle">The Rose Gold Hotel</div>
+                </div>
+                <!-- 3 columns -->
+                <% if(about_gallery.length > 0){ %>
+                    <% for(var i=0;i<3;i++){ %>
+                        <div class="col-md-4 gallery-item">
+                            <a href="/upload_image/about_gallery_image/<%= about_gallery[i].about_gallery_image %>" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                         <img src="/upload_image/about_gallery_image/<%= about_gallery[i].about_gallery_image %>" class="img-fluid mx-auto d-block" alt="work-img" style="height: 50vh;width: 100%;object-fit: cover;border-radius: 10px;"/> 
+                                    </div>
+                                </div>
+                                <h2 class="text-center py-3"><%= about_gallery[i].about_gallery_name %></h2>
+                            </a>
+                        </div>
+                    <% } %>
+                    <% for(var i=3;i<about_gallery.length;i++){ %>
+                        <div class="col-md-6 gallery-item">
+                            <a href="/upload_image/about_gallery_image/<%= about_gallery[i].about_gallery_image %>" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img">
+                                         <img src="/upload_image/about_gallery_image/<%= about_gallery[i].about_gallery_image %>" class="img-fluid mx-auto d-block" alt="work-img" style="height: 50vh;width: 100%;border-radius: 10px;"/> 
+                                    </div>
+                                </div>
+                                <h2 class="text-center py-3"><%= about_gallery[i].about_gallery_name %></h2>
+                            </a>
+                        </div>
+                    <% } %>
+                <% }else { %>
+                    <div class="col-md-4 gallery-item">
+                        <a href="img/slider/7.jpg" title="" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="https://img.freepik.com/free-photo/tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese_90220-1063.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1709510400&semt=sph" class="img-fluid mx-auto d-block" alt="work-img" style="height:60vh;width: 100%;object-fit: cover;"> </div>
+                            </div>
+                            <h2 class="text-center py-3">Gallery 1</h2>
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item">
+                        <a href="img/slider/5.jpg" title="" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="https://img.freepik.com/free-photo/tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese_90220-1063.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1709510400&semt=sph" class="img-fluid mx-auto d-block" alt="work-img" style="height:60vh;width: 100%;object-fit: cover;"> </div>
+                            </div>
+                            <h2 class="text-center py-3">Gallery 1</h2>
+                        </a>
+                    </div>
+                    <div class="col-md-4 gallery-item">
+                        <a href="img/slider/4.jpg" title="" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="https://img.freepik.com/free-photo/tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese_90220-1063.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1709510400&semt=sph" class="img-fluid mx-auto d-block" alt="work-img" style="height:60vh;width: 100%;object-fit: cover;"> </div>
+                            </div>
+                            <h2 class="text-center py-3">Gallery 1</h2>
+                        </a>
+                    </div>
+                <% } %>
+               
+                
+            </div>
+        </div>
+    </section>
+
+    <br><br><br>
+
+     <!-- Team -->
+    <section class="team section-padding bg-cream">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">Our Team</div>
+                    <div class="section-line"></div>
+                    <div class="section-subtitle">The Rose Gold Hotel</div>
+                </div>
+            </div>
+            <div class="row py-5">
+                <div class="col-md-12 owl-carousel owl-theme py-5">
+                    <% if(team_member.length>0){ %>
+                        <% for(var i=0;i<team_member.length;i++){ %>
+                            <div class="item">
+                                <div class="img"> 
+                                    <img src="/upload_image/team_member_image/<%= team_member[i].team_member_image %>" alt="tem<%= i+1 %> img" style="height: 50vh;width: 100%;object-fit: cover;"> 
+                                </div>
+                                <div class="info">
+                                    <h6><%= team_member[i].team_member_name %></h6>
+                                    <p><%= team_member[i].team_member_desi %></p>
+                                    <div class="social valign">
+                                        <div class="full-width"> 
+                                           <a href="mail:<%= team_member[i].team_member_email %>"><i class="ri-mail-open-line"></i></a> 
+                                           <a href="<%= team_member[i].team_facebook_link %>"><i class="ri-facebook-line"></i></a> 
+                                           
+                                           <a href="<%= team_member[i].team_member_lidin %>"><i class="ri-linkedin-line"></i></a>
+                                           <p><%= team_member[i].team_member_email %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <% } %>
+                    <% } else { %>
+
+                        <div class="item">
+                            <div class="img"> 
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeCnt2MgIZulkr9RU0fa2Bzm-5F4EAp0n0pCgVvakGGxwzYxyhFMFCo4EaZK8qLvHbZU4&usqp=CAU" alt="" style="height: 50vh;width: 100%;object-fit: cover;"> </div>
+                            <div class="info">
+                                <h6>Micheal White</h6>
+                                <p>Guest Service Department</p>
+                                <div class="social valign">
+                                    <div class="full-width"> 
+                                        <a href="#"><i class="ti-instagram"></i></a>
+                                        <a href="#"><i class="ti-twitter"></i></a> 
+                                        <a href="#"><i class="ti-facebook"></i></a> 
+                                        <a href="#"><i class="ti-pinterest"></i></a>
+                                        <p>micheal@hotel.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeCnt2MgIZulkr9RU0fa2Bzm-5F4EAp0n0pCgVvakGGxwzYxyhFMFCo4EaZK8qLvHbZU4&usqp=CAU" alt="" style="height: 50vh;width: 100%;object-fit: cover;"> </div>
+                            <div class="info">
+                                <h6>Olivia Martin</h6>
+                                <p>Reservations Manager</p>
+                                <div class="social valign">
+                                    <div class="social valign">
+                                        <div class="full-width"> 
+                                           <a href="#"><i class="ti-instagram"></i></a> 
+                                           <a href="#"><i class="ti-twitter"></i></a> 
+                                           <a href="#"><i class="ti-facebook"></i></a> 
+                                           <a href="#"><i class="ti-pinterest"></i></a>
+                                           <p>olivia@hotel.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeCnt2MgIZulkr9RU0fa2Bzm-5F4EAp0n0pCgVvakGGxwzYxyhFMFCo4EaZK8qLvHbZU4&usqp=CAU" alt="" style="height: 50vh;width: 100%;object-fit: cover;"> </div>
+                            <div class="info">
+                                <h6>Mariana Dana</h6>
+                                <p>F&B Manager</p>
+                                <div class="social valign">
+                                    <div class="full-width"> 
+                                       <a href="#"><i class="ti-instagram"></i></a> 
+                                       <a href="#"><i class="ti-twitter"></i></a> 
+                                       <a href="#"><i class="ti-facebook"></i></a> 
+                                       <a href="#"><i class="ti-pinterest"></i></a>
+                                       <p>mariana@hotel.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeCnt2MgIZulkr9RU0fa2Bzm-5F4EAp0n0pCgVvakGGxwzYxyhFMFCo4EaZK8qLvHbZU4&usqp=CAU" alt="" style="height: 50vh;width: 100%;object-fit: cover;"> </div>
+                            <div class="info">
+                                <h6>Enrico Brown</h6>
+                                <p>Head Chef</p>
+                                <div class="social valign">
+                                    <div class="full-width"> 
+                                       <a href="#"><i class="ti-instagram"></i></a> 
+                                       <a href="#"><i class="ti-twitter"></i></a> 
+                                       <a href="#"><i class="ti-facebook"></i></a> 
+                                       <a href="#"><i class="ti-pinterest"></i></a>
+                                       <p>enrico@hotel.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeCnt2MgIZulkr9RU0fa2Bzm-5F4EAp0n0pCgVvakGGxwzYxyhFMFCo4EaZK8qLvHbZU4&usqp=CAU" alt="" style="height: 50vh;width: 100%;object-fit: cover;"> </div>
+                            <div class="info">
+                                <h6>Victoria Dan</h6>
+                                <p>Meetings and Events Manager</p>
+                                <div class="social valign">
+                                    <div class="full-width"> 
+                                       <a href="#"><i class="ti-instagram"></i></a> 
+                                       <a href="#"><i class="ti-twitter"></i></a> 
+                                       <a href="#"><i class="ti-facebook"></i></a> 
+                                       <a href="#"><i class="ti-pinterest"></i></a>
+                                       <p>victoria@hotel.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                   
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <%- include("footer.ejs") %>

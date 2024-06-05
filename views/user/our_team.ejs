@@ -1,0 +1,79 @@
+<%- include("navbar.ejs") %> 
+
+
+
+    <!-- Header Banner -->
+    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/our-team-banner.jpg" style="background-attachment: fixed;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center caption mt-90">
+                    <h1>Our Team</h1>
+                    <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>Our Team</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title">Hotel Owner</div>
+            <div class="section-line"></div>
+            <div class="section-subtitle">The Rose Gold Hotel</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row d-flex justify-content-around align-items-start">
+        <div class="col-md-5 offset-md-1">
+            <div>
+                <img src="/upload_image/website_logo/<%= hotel_data[0].hotel_logo %>" style="height: 100px;width: 100px;" alt="" >
+            </div>
+            <h1 class="text-left">The Rose Gold Hotel</h1>
+            <p class="my-4 text-left" style="text-wrap: wrap;">
+                <%= hotel_owner_data[0].hotel_owner_description %>
+            </p>
+        </div>
+        <div class="col-md-5 my-5 text-center">
+            <img src="/upload_image/owner_image/<%= hotel_owner_data[0].hotel_owner_image %>" style="height: auto;max-width: 50%;object-fit: cover;" alt="">
+
+            <p class="lead text-center py-4" style="text-wrap: wrap;"><%= hotel_owner_data[0].hotel_owner_name %> <br> (<%= hotel_owner_data[0].hotel_owner_education %>)</p>
+        </div>
+    </div>
+</div>
+<!-- Team -->
+<section class="team section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Our Team</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+            <% for(var i=0;i<team_member.length;i++){ %>
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="img"> <img src="/upload_image/team_member_image/<%= team_member[i].team_member_image %>" style="height: 350px;width: 100%;object-fit: cover;" alt=""> </div>
+                        <div class="info">
+                            <h6><%= team_member[i].team_member_name %></h6>
+                            <p><%= team_member[i].team_member_desi %></p>
+                            <div class="social valign">
+                                <div class="full-width"> 
+                                    <a href="mail:<%= team_member[i].team_member_email %>"><i class="ri-mail-open-line"></i></a> 
+                                    <a href="<%= team_member[i].team_facebook_link %>"><i class="ri-facebook-line"></i></a> 
+                                    
+                                    <a href="<%= team_member[i].team_member_lidin %>"><i class="ri-linkedin-line"></i></a>
+                                    <p><%= team_member[i].team_member_email %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            
+        </div>
+    </div>
+</section>
+<%- include("footer.ejs") %>

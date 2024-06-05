@@ -1,0 +1,76 @@
+<%- include("navbar.ejs") %>
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Other Booking Room Order Details</h4>
+          <div class="">
+            <table class="table text-center table-hover table-responsive table-bordered">
+              <thead>
+                <tr>
+                  <th>Srno</th>
+                  <th>
+                    Order Status
+                  </th>
+                  <th>Delete</th>
+                  <th> Client Name </th>
+                  <th> Client Mobile </th>
+                  <th> Client Email </th>
+                  <th> Check In Date </th>
+                  <th> Check Out Date </th>
+                  <th> Room Name </th>
+                  <th> Room Price </th>
+                  <th> Room Type </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(other_room_data.length>0){ %>
+                  <% for(var i=0;i<other_room_data.length;i++){ %>
+                    <tr>
+                      <td><%= i+1 %></td>
+                      <td>
+                        <% if(other_room_data[i].room_status=='pending'){ %>
+                          <a href="/admin/approve_other_room_client/<%= other_room_data[i].room_id %>/approve">
+                            <div class="badge badge-outline-success" onclick="return confirm('Are You Sure To Confirm Order')" >Approved</div>
+                          </a>
+                          <a href="/admin/reject_other_room_client_data/<%= other_room_data[i].room_id %>/reject">
+                            <div class="badge badge-outline-danger" onclick="return confirm('Are You Sure To Reject Order')">Rejected</div> 
+                          </a>
+                        <% }else if(other_room_data[i].room_status=='reject'){ %>
+                          <span class="text-danger"><i class="ri-close-circle-line" style="font-size: 1rem;"></i></span>
+                        <% }else{ %>
+                          <span class="text-success" style="font-size: 1rem;"><i class="ri-check-double-line"></i></span>
+                        <% } %>
+
+                      </td>
+                      <td>
+                        <a href="/admin/delete_other_room_client_data/<%= other_room_data[i].room_id %>">
+                          <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Are You Sure To Delete Record')"><i class="ri-delete-bin-line"></i></button>
+                        </a>
+                      </td>
+                      <td><%= other_room_data[i].client_name %></td>
+                      <td><%= other_room_data[i].client_number %></td>
+                      <td><%= other_room_data[i].client_email %></td>
+                      <td><%= other_room_data[i].client_checkin %></td>
+                      <td><%= other_room_data[i].client_checkout %></td>
+                      <td><%= other_room_data[i].room_name %></td>
+                      <td><%= other_room_data[i].room_price %> RS</td>
+                      <td><%= other_room_data[i].room_type %></td>
+                    </tr>
+                  <% } %>
+                  
+                <% }else{ %>
+                  <td colspan="12" class="text-center">No Order Found</td>
+                <% } %>
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<%- include("footer.ejs") %>

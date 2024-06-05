@@ -1,0 +1,66 @@
+<%- include("navbar.ejs") %>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-start">
+            <a href="/admin/add_sub_cat_data/<%= event_data[0].event_hall_com_id %>"> <button class="btn btn-outline-success">Go To Back</button></a>
+           
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-responsive table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>update data</th>
+                        <th>srno</th>
+                        <th>Event Hall Name</th>
+                        <th>Event Hall Price</th>
+                        <th>Event Hall Image</th>
+                        <th>Event Hall Feature</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(event_data.length>0){ %>
+                        <% for(var i=0;i<event_data.length;i++){ %>
+                            <tr>
+                                <td>
+                                    <a href="/admin/edit_event_hall_sub_cat_data/<%= event_data[i].event_hall_id %>"
+                                        style="text-decoration: none;">
+                                        <button type="button" class="btn btn-outline-twitter btn-sm"
+                                          style="padding: 10px;text-align: center;">
+                                          <i class="ri-edit-box-line"></i>
+                                        </button>
+                                      </a>
+                                      <a href="/admin/delete_event_hall_sub_cat_data?id=<%= event_data[i].event_hall_id %>"
+                                        style="text-decoration: none;">
+                                        <button type="button" class="btn btn-outline-youtube btn-sm"
+                                          style="padding: 10px;text-align: center;"
+                                          onclick="return confirm('Are You Sure To Delete Data')">
+                                          <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                      </a>
+                                </td>
+                                <td><%= i+1 %></td>
+                                <td><%= event_data[i].event_hall_name %></td>
+                                <td><%= event_data[i].event_hall_price %></td>
+                                <td><img src="/upload_image/event_hall_image/<%= event_data[i].event_hall_image %>" alt=""></td>
+                                <td><%= event_data[i].event_hall_feature %></td>
+                            </tr>
+                        <% } %>
+                        
+                    <% }else{ %>
+                        <tr>
+                            <td colspan="6" class="text-center">No Data Found</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>

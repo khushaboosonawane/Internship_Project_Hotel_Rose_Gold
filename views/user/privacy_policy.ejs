@@ -1,0 +1,37 @@
+<%- include("navbar.ejs") %>
+
+    <!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="/img/privacy_policy_banner_image.jpeg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Privacy & Policy</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color:#d1ae6f;">/</b>Privacy & Policy</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <section class=" ">
+        <div class="container background">
+            <div class="row mt-2">
+                <div class="col-md-12 mt-5">
+                    <div class="section-title">Privacy Policy</div>
+                    <div class="section-line" style="width: 400px;"></div>
+                    <div class="section-subtitle">The Rose Gold Hotel</div>
+                </div>
+
+                <% for(var i=0;i<pri_poli_data.length;i++){ %>
+                    <div class="col-md-12 ">
+                        <h4 class="mt-5 " style="text-transform: uppercase;"><span style="font-weight: bolder; color: black !important;"><%= i+1 %>.</span>&nbsp;<%= pri_poli_data[i].privacy_policy_title %></h4>
+
+                        <p class="m-5 mt-2 " style="color: black;"><%= pri_poli_data[i].privacy_policy_desc %></p>
+                    </div>
+                <% } %>
+                
+                    
+            </div>
+        </div>
+    </section>
+    <%- include("footer.ejs") %>

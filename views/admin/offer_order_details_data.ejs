@@ -1,0 +1,74 @@
+<%- include("navbar.ejs") %>
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Special offer Order Book Details</h4>
+          <div class="">
+            <table class="table text-center table-hover table-responsive table-bordered">
+              <thead>
+                <tr>
+                  <th>Srno</th>
+                  <th>
+                    Order Status
+                  </th>
+                  <th>Delete</th>
+                  <th> Client Name </th>
+                  <th> Client Mobile </th>
+                  <th> Client Email </th>
+                  <th> Hall Name </th>
+                  <th> Hall Price </th>
+                  <th> Check In Date </th>
+                  <th> Check Out Date </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(offer_client_data.length>0){ %>
+                  <% for(var i=0;i<offer_client_data.length;i++){ %>
+                    <tr>
+                      <td><%= i+1 %></td>
+                      <td>
+                        <% if(offer_client_data[i].offer_client_status=='pending'){ %>
+                          <a href="/admin/approved_offer_client/<%= offer_client_data[i].offer_client_id %>/approve">
+                            <div class="badge badge-outline-success" onclick="return confirm('Are You Sure To Confirm Order')" >Approved</div>
+                          </a>
+                          <a href="/admin/approved_offer_client_reject/<%= offer_client_data[i].offer_client_id %>/reject">
+                            <div class="badge badge-outline-danger" onclick="return confirm('Are You Sure To Reject Order')">Rejected</div> 
+                          </a>
+                        <% }else if(offer_client_data[i].offer_client_status=='reject'){ %>
+                          <span class="text-danger"><i class="ri-close-circle-line" style="font-size: 1rem;"></i></span>
+                        <% }else{ %>
+                          <span class="text-success" style="font-size: 1rem;"><i class="ri-check-double-line"></i></span>
+                        <% } %>
+
+                      </td>
+                      <td>
+                        <a href="/admin/delete_offer_client_data/<%= offer_client_data[i].offer_client_id %>">
+                          <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Are You Sure To Delete Record')"><i class="ri-delete-bin-line"></i></button>
+                        </a>
+                      </td>
+                      <td><%= offer_client_data[i].offer_client_name %></td>
+                      <td><%= offer_client_data[i].offer_client_number %></td>
+                      <td><%= offer_client_data[i].offer_client_email %></td>
+                      <td><%= offer_client_data[i].offer_hall_name %></td>
+                      <td><%= offer_client_data[i].offer_hall_price %></td>
+                      <td><%= offer_client_data[i].client_checkin %></td>
+                      <td><%= offer_client_data[i].client_checkout %></td>
+                    </tr>
+                  <% } %>
+                  
+                <% }else{ %>
+                  <td colspan="10" class="text-center">No Order Found</td>
+                <% } %>
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<%- include("footer.ejs") %>

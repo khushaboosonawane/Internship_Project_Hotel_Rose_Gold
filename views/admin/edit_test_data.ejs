@@ -1,0 +1,124 @@
+<%- include("navbar.ejs") %>
+
+<div class="row">
+    <div class="col-md-12">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+            <div>
+                <% if (successMessage) { %>
+                    <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+                        id="notification">
+                        <%= successMessage %>
+                    </div>
+                    <% } %>
+                        <script>
+                            setTimeout(function () {
+                                // document.getElementById("notification").style.display = "none";
+                                $("#notification").fadeOut(2000);
+                            }, 3000);
+                        </script>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: -12px;">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card corona-gradient-card">
+                    <div class="card-body py-0 px-0 px-sm-3">
+                        <div class="row align-items-center" style="padding: 2px;">
+                            <div class="col-4 col-sm-3 col-xl-2">
+
+                                <i class="ri-speak-line" style="font-size: 30px;"></i>
+
+                            </div>
+                            <div class="col-5 col-sm-7 col-xl-8 p-0">
+                                <h4 class="mb-1 mb-sm-0 text-dark"
+                                    style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">
+                                    Updated Testimonial Information</h4>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+
+                        <!-- create table testimonial (test_id integer primary key auto_increment,test_name varchar(20000),test_description varchar(10000),test_img text) -->
+                        <form class="form-sample" action="/admin/update_testimonial_data"
+                            enctype="multipart/form-data" method="post" id="myform">
+                            <input type="hidden" name="test_id" value="<%= test_data[0].test_id %>">
+                            <input type="hidden" name="rat_id" id="" value="<%= test_data[0].rat_id %>">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Testimonial Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="test_name"
+                                                placeholder="Enter Testimonial Name" value="<%= test_data[0].test_name %>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Testimonial Description</label>
+                                        <div class="col-sm-9">
+                                            <textarea placeholder="Enter Testimonial Description"
+                                                class="form-control" name="test_description"><%= test_data[0].test_description %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Testimonial Image</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" class="form-control" name="test_img"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="/upload_image/testimonial_image/<%= test_data[0].test_img %>" alt="test_img" style="height: 150px;width: 150px;">
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Rating</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" name="rating"
+                                                placeholder="Enter Testimonial Rating" value="<%= test_data[0].rating %>" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="butt mr-2 my-4">Update Data</button>
+                        </div>
+                    </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+</div>
+
+
+
+<%- include("footer.ejs") %>

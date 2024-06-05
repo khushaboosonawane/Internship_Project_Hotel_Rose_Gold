@@ -1,0 +1,98 @@
+<%- include("navbar.ejs") %>
+
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/contact_banner_image.jpg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Contact</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: #d1ae6f;">/</b>Contact</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+<!-- Contact -->
+<section class="contact section-padding">
+    <div class="container">
+        <div class="row mb-90">
+            <div class="col-md-6 mb-60">
+                <h3><span style="color:#b1616c;"><i class="ri-flower-fill"></i></span> The Rose Gold Hotel</h3>
+                <p><%= hotel_data[0].about_description %></p>
+                <div class="reservations mb-30">
+                    <div class="icon"><i class="ri-phone-line h1"></i></div>
+                    <div class="text">
+                        <p>Reservation</p> <a href="tel:<%= hotel_data[0].hotel_contact_number %>"><%= hotel_data[0].hotel_contact_number %></a>
+                    </div>
+                </div>
+                <div class="reservations mb-30">
+                    <div class="icon"><i class="ri-mail-fill h1"></i></div>
+                    <div class="text">
+                        <p>Email Info</p> <a href="mailto:<%=hotel_data[0].hotel_email_id  %>"><%=hotel_data[0].hotel_email_id  %></a>
+                    </div>
+                </div>
+                <div class="reservations">
+                    <div class="icon"><i class="ri-map-pin-line h1"></i></div>
+                    <div class="text">
+                        <p>Address</p> <%= hotel_data[0].hotel_address %>
+                    </div>
+                </div>
+            </div>
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.771759630957!2d74.73309207425282!3d19.117666250664975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcbbe90438d2af%3A0x67d12395cfea6b8c!2sHotel%20Rose%20Gold!5e0!3m2!1sen!2sin!4v1709991626075!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            <div class="col-md-6">
+                <iframe src="<%= contact_map[0].con_link %>" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Contact Us</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+            <div class="col-md-12 mb-30 p-5 shadow shadow-light" style="border-radius: 30px;">
+                
+                <form method="post" class="contact__form" action="/contact_info">
+                    <!-- form message -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success contact__msg" style="display: none" role="alert"> Your message was sent successfully. </div>
+                        </div>
+                    </div>
+                   
+                    <!-- form elements -->
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input name="con_name" type="text" placeholder="Your Name *" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input name="con_email" type="email" placeholder="Your Email *" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input name="con_phone" type="number" placeholder="Your Number *" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input name="con_subject" type="text" placeholder="Subject *" required>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <textarea name="con_message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
+                        </div>
+                        <br><br>
+                        <div class="col-md-12 d-flex justify-content-center my-5">
+                            <!-- <button type="submit" class="butn-dark2"><span>Send Message</span></button> -->
+
+                            <!-- HTML !-->
+                            <button class="button-63" role="button" type="submit">Contact Us</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</section>
+
+<%- include("footer.ejs") %>

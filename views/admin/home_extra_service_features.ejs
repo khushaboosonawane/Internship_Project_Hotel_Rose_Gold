@@ -1,0 +1,219 @@
+<%- include("navbar.ejs") %>
+<div class="row">
+    <div class="col-md-12">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+        <div>
+          <% if (successMessage) { %>
+            <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+              id="notification">
+              <%= successMessage %>
+            </div>
+            <% } %>
+
+              <script>
+                setTimeout(function () {
+                  // document.getElementById("notification").style.display = "none";
+                  $("#notification").fadeOut(2000);
+                }, 3000);
+              </script>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: -12px;">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card corona-gradient-card">
+            <div class="card-body py-0 px-0 px-sm-3">
+              <div class="row align-items-center" style="padding: 2px;">
+                <div class="col-4 col-sm-3 col-xl-2">
+
+                  <i class="ri-netease-cloud-music-line" style="font-size: 30px;"></i>
+
+                </div>
+                <div class="col-5 col-sm-7 col-xl-8 p-0">
+                  <h4 class="mb-1 mb-sm-0 text-white"
+                    style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Extra Service Information</h4>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+
+                <!-- create table extra_service(extra_id integer primary key auto_increment,extra_service_slider_image text,extra_service_title varchar(1000),extra_service_price integer,extra_service_feature varchar(20000),extra_service_one varchar(2000),extra_service_two varchar(2000),extra_service_three varchar(3000)) -->
+
+              <form class="form-sample" action="/admin/save_extra_service_data" enctype="multipart/form-data" method="post"
+                id="myform">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Extra Service Title</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="extra_service_title" required placeholder="Extra Service Title" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Extra Service Price</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" name="extra_service_price" required placeholder="Extra Service Price" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Extra Service Feature</label>
+                      <div class="col-sm-9">
+                        <textarea class="form-control" name="extra_service_feature" required placeholder="Extra Service Feature" ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">First Extra Service</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="extra_service_one" required placeholder="Extra Service First Feature" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Second Extra Service</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="extra_service_two" required placeholder="Extra Service Second Feature" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Thired Extra Service</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="extra_service_three" required placeholder="Extra Service Thired Feature" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Extra Service Image</label>
+                        <div class="col-sm-9">
+                          <input type="file" class="form-control" id="exampleInputUsername2" required name="extra_service_slider_image">
+                        </div>
+                      </div>
+                  </div>
+
+                </div>
+                
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="butt mr-2 my-4">Save</button>
+              </div>
+            </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Extra Service Information</h4>
+                </p>
+                <div class="">
+                  <table class="table table-hover table-bordered table-responsive">
+                    <thead>
+                      <tr>
+                        <th> Update Data </th>
+                        <th> SrNo </th>
+                        <th> Service Title </th>
+                        <th> Service Price </th>
+                        <th> Service First Feature </th>
+                        <th> Service Second Feature </th>
+                        <th> Service Thired Feature </th>
+                        <th>Service Feature</th>
+                        <th>Service Image</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% if(extra_service_data.length>0){ %>
+                        <% for(var i=0;i<extra_service_data.length;i++){ %>
+
+                          <tr>
+                            <td>
+                              <a href="/admin/edit_extra_service_data/<%= extra_service_data[i].extra_id %>"
+                                style="text-decoration: none;">
+                                <button type="button" class="btn btn-outline-twitter"
+                                  style="padding: 10px;text-align: center;">
+                                  <i class="ri-edit-box-line"></i>
+                                </button>
+                              </a>
+                              <a href="/admin/delete_extra_service_data?id=<%= extra_service_data[i].extra_id %>"
+                                style="text-decoration: none;">
+                                <button type="button" class="btn btn-outline-youtube"
+                                  style="padding: 10px;text-align: center;"
+                                  onclick="return confirm('Are You Sure To Delete Data')">
+                                  <i class="ri-delete-bin-line"></i>
+                                </button>
+                              </a>
+
+                            </td>
+                            <td>
+                              <%= i+1 %>
+                            </td>
+                            <td>
+                              <%= extra_service_data[i].extra_service_title %>
+                            </td>
+                            <td>
+                                <%= extra_service_data[i].extra_service_price %>
+                              </td>
+                            <td>
+                              <%= extra_service_data[i].extra_service_one %>
+                            </td>
+                            <td>
+                                <%= extra_service_data[i].extra_service_two %>
+                            </td>
+                            <td>
+                                <%= extra_service_data[i].extra_service_three %>
+                            </td>
+                            <td>
+                                <%= extra_service_data[i].extra_service_feature %>
+                            </td>
+
+                            <td class="py-1">
+                              <img src="/upload_image/extra_service_image/<%= extra_service_data[i].extra_service_slider_image %>" alt="image" />
+                            </td>
+                          </tr>
+
+                          <% } %>
+                            <% }else{ %>
+                              <tr style="text-align: center;">
+                                <td colspan="9">Data Not Found</td>
+                              </tr>
+                              <% } %>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<%- include("footer.ejs") %>

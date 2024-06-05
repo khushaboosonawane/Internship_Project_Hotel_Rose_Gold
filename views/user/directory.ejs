@@ -1,0 +1,267 @@
+<%- include("navbar.ejs") %>
+
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="3" data-background="img/directory_banner.jpeg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-left caption mt-90 text-center">
+                <h1>Our Directory</h1>
+                <h5>Get in touch</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Restaurant Content -->
+<section class="rooms-page section-padding" data-scroll-index="1">
+    <div class="container">
+        <div class="row border border-secundery shadow p-5">
+            <div class="col-md-12 text-left"> 
+                <!-- <span>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                </span> -->
+                <div class="section-title text-center">The Opening Houres</div>
+            </div>
+            <div class="col-md-12">
+                <p class="mb-30 text-center">Led by Chef de Micheal Martin, The Restaurant is celebrated for its excellent cuisine and unique ambience. The gorgeous dining room features three open studio kitchens, allowing you to enjoy the sights and sounds of the culinary artistry on display. The menu showcases both Asian and European influences, with a tempting selection of classic favorites and creative dishes for you to sample. Cheese connoisseurs will be drawn to the The Wine and Cheese Cellar, housed in five-meter-high glass walls, where our knowledgeable staff can introduce you to some of New York's greatest culinary treasures.</p>
+                <h6>Hours</h6>
+                <ul class="list-unstyled page-list mb-30">
+                    <li>
+                        <div class="page-list-icon"> <span class="ti-time"></span> </div>
+                        <div class="page-list-text">
+                            <p>Breakfast: 7.00 am – 11.00 am (daily)</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="page-list-icon"> <span class="ti-time"></span> </div>
+                        <div class="page-list-text">
+                            <p>Lunch: 12.00 noon – 2.00 pm (daily)</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="page-list-icon"> <span class="ti-time"></span> </div>
+                        <div class="page-list-text">
+                            <p>Dinner: open from 6.30 pm, last order at 10.00 pm (daily)</p>
+                        </div>
+                    </li>
+                </ul>
+               
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br><br>
+
+<!-- Contact -->
+ <!-- Restaurant Menu -->
+ <section id="menu" class="restaurant-menu menu section-padding" style="background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url('https://img.freepik.com/free-psd/food-menu-restaurant-web-banner-template_106176-825.jpg');background-size: cover;background-repeat: no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-subtitle"><span>Rose Gold Hotel</span></div>
+                <div class="section-title"><span>Restaurant Menu</span></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="tabs-icon col-md-10 offset-md-1 text-center">
+                        <div class="owl-carousel owl-theme">
+                            <div id="tab-1" class="active item">
+                                <h6>Starters</h6>
+                            </div>
+                            <div id="tab-3" class="item">
+                                <h6>Salads</h6>
+                            </div>
+                            <div id="tab-4" class="item">
+                                <h6>Wine</h6>
+                            </div>
+                            <div id="tab-5" class="item">
+                                <h6>Breakfast</h6>
+                            </div>
+                            <div id="tab-6" class="item">
+                                <h6>Dessert</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="restaurant-menu-content col-md-12">
+                        <!-- Starters -->
+                        <div id="tab-1-content" class="cont active">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="menu-info">
+                                        <h5><%= starter_data[0].first_dish %> <span class="price"><%= starter_data[0].fir_pri %> .RS</span></h5>
+                                        <p><%= starter_data[0].first_dish_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= starter_data[0].second_dish %> <span class="price"><%= starter_data[0].sec_pri %>RS</span></h5>
+                                        <p><%= starter_data[0].sec_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= starter_data[0].thir_dish %><span class="price"><%= starter_data[0].thir_pri %>RS</span></h5>
+                                        <p><%= starter_data[0].thir_dis %></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 offset-md-2">
+                                    <div class="menu-info">
+                                        <h5><%= starter_data[0].fourth_dish %> <span class="price"><%= starter_data[0].four_pri %> RS</span></h5>
+                                        <p><%= starter_data[0].fourth_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= starter_data[0].fifth_dish %><span class="price"><%= starter_data[0].fif_pri %></span></h5>
+                                        <p><%= starter_data[0].fifth_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= starter_data[0].sixth_dish %> <span class="price"><%= starter_data[0].six_pri %> RS</span></h5>
+                                        <p><%= starter_data[0].sixth_des %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Salads -->
+                        <div id="tab-3-content" class="cont">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="menu-info">
+                                        <h5><%= salad_data[0].first_dish %> <span class="price"><%= salad_data[0].fir_pri %> .RS</span></h5>
+                                        <p><%= salad_data[0].first_dish_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= salad_data[0].second_dish %> <span class="price"><%= salad_data[0].sec_pri %>RS</span></h5>
+                                        <p><%= salad_data[0].sec_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= salad_data[0].thir_dish %><span class="price"><%= salad_data[0].thir_pri %>RS</span></h5>
+                                        <p><%= salad_data[0].thir_dis %></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 offset-md-2">
+                                    <div class="menu-info">
+                                        <h5><%= salad_data[0].fourth_dish %> <span class="price"><%= salad_data[0].four_pri %> RS</span></h5>
+                                        <p><%= salad_data[0].fourth_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= salad_data[0].fifth_dish %><span class="price"><%= salad_data[0].fif_pri %></span></h5>
+                                        <p><%= salad_data[0].fifth_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= salad_data[0].sixth_dish %> <span class="price"><%= salad_data[0].six_pri %> RS</span></h5>
+                                        <p><%= salad_data[0].sixth_des %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wine -->
+                        <div id="tab-4-content" class="cont">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="menu-info">
+                                        <h5><%= wine_data[0].first_dish %> <span class="price"><%= wine_data[0].fir_pri %> .RS</span></h5>
+                                        <p><%= wine_data[0].first_dish_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= wine_data[0].second_dish %> <span class="price"><%= wine_data[0].sec_pri %>RS</span></h5>
+                                        <p><%= wine_data[0].sec_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= wine_data[0].thir_dish %><span class="price"><%= wine_data[0].thir_pri %>RS</span></h5>
+                                        <p><%= wine_data[0].thir_dis %></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 offset-md-2">
+                                    <div class="menu-info">
+                                        <h5><%= wine_data[0].fourth_dish %> <span class="price"><%= wine_data[0].four_pri %> RS</span></h5>
+                                        <p><%= wine_data[0].fourth_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= wine_data[0].fifth_dish %><span class="price"><%= wine_data[0].fif_pri %></span></h5>
+                                        <p><%= wine_data[0].fifth_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= wine_data[0].sixth_dish %> <span class="price"><%= wine_data[0].six_pri %> RS</span></h5>
+                                        <p><%= wine_data[0].sixth_des %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Breakfast -->
+                        <div id="tab-5-content" class="cont">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="menu-info">
+                                        <h5><%= breakfast_data[0].first_dish %> <span class="price"><%= breakfast_data[0].fir_pri %> .RS</span></h5>
+                                        <p><%= breakfast_data[0].first_dish_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= breakfast_data[0].second_dish %> <span class="price"><%= breakfast_data[0].sec_pri %>RS</span></h5>
+                                        <p><%= breakfast_data[0].sec_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= breakfast_data[0].thir_dish %><span class="price"><%= breakfast_data[0].thir_pri %>RS</span></h5>
+                                        <p><%= breakfast_data[0].thir_dis %></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 offset-md-2">
+                                    <div class="menu-info">
+                                        <h5><%= breakfast_data[0].fourth_dish %> <span class="price"><%= breakfast_data[0].four_pri %> RS</span></h5>
+                                        <p><%= breakfast_data[0].fourth_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= breakfast_data[0].fifth_dish %><span class="price"><%= breakfast_data[0].fif_pri %></span></h5>
+                                        <p><%= breakfast_data[0].fifth_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= breakfast_data[0].sixth_dish %> <span class="price"><%= breakfast_data[0].six_pri %> RS</span></h5>
+                                        <p><%= breakfast_data[0].sixth_des %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Dessert -->
+                        <div id="tab-6-content" class="cont">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="menu-info">
+                                        <h5><%= desert_data[0].first_dish %> <span class="price"><%= desert_data[0].fir_pri %> .RS</span></h5>
+                                        <p><%= desert_data[0].first_dish_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= desert_data[0].second_dish %> <span class="price"><%= desert_data[0].sec_pri %>RS</span></h5>
+                                        <p><%= desert_data[0].sec_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= desert_data[0].thir_dish %><span class="price"><%= desert_data[0].thir_pri %>RS</span></h5>
+                                        <p><%= desert_data[0].thir_dis %></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 offset-md-2">
+                                    <div class="menu-info">
+                                        <h5><%= desert_data[0].fourth_dish %> <span class="price"><%= desert_data[0].four_pri %> RS</span></h5>
+                                        <p><%= desert_data[0].fourth_dis %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= desert_data[0].fifth_dish %><span class="price"><%= desert_data[0].fif_pri %></span></h5>
+                                        <p><%= desert_data[0].fifth_des %></p>
+                                    </div>
+                                    <div class="menu-info">
+                                        <h5><%= desert_data[0].sixth_dish %> <span class="price"><%= desert_data[0].six_pri %> RS</span></h5>
+                                        <p><%= desert_data[0].sixth_des %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+    <br><br><br>
+
+<%- include("footer.ejs") %>

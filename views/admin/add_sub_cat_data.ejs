@@ -1,0 +1,559 @@
+<%- include("navbar.ejs") %>
+
+<!-- food category data  -->
+
+<% if(sub_id==1) {%>
+    <div class="row">
+        <div class="col-md-12">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+          <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+            <div>
+              <% if (successMessage) { %>
+                <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+                  id="notification">
+                  <%= successMessage %>
+                </div>
+                <% } %>
+                  <script>
+                    setTimeout(function () {
+                      // document.getElementById("notification").style.display = "none";
+                      $("#notification").fadeOut(2000);
+                    }, 3000);
+                  </script>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mb-4" style="margin-top: -10px;">
+            <div class="col-md-12 d-flex justify-content-end">
+                <a href="/admin/view_food_sub_cat_data">
+                    <button class="btn btn-outline-success">View Sub Category data</button>
+                </a>
+            </div>
+        </div>
+        <div class="row" style="margin-top: -12px;">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card corona-gradient-card">
+                <div class="card-body py-0 px-0 px-sm-3">
+                  <div class="row align-items-center" style="padding: 2px;">
+                    <div class="col-4 col-sm-3 col-xl-2">
+    
+                      <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                      <i class="ri-equalizer-line" style="font-size: 30px;"></i>
+    
+                    </div>
+                    <div class="col-5 col-sm-7 col-xl-8 p-0">
+                      <h4 class="mb-1 mb-sm-0 text-dark"
+                        style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Add <%= cat_data[0].cat_name %> Sub Category</h4>
+    
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+    
+                  <!-- create table food (food_id integer primary key AUTO_INCREMENT,food_name varchar(20000),food_price integer,food_quantity integer,food_com_id text,food_image text,food_description text,food_feature_one text,food_feature_two text,food_feature_three text,food_veg_nonveg varchar(20000),food_type text) -->
+
+                  <form class="form-sample" action="/admin/save_food_sub_cat_data" enctype="multipart/form-data" method="post"
+                    id="myform">
+                    <input type="hidden" name="food_com_id" value="<%= cat_data[0].cat_id %>">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Food Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="food_name" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Food Price</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" name="food_price" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Food Image</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="food_image" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Food Description</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" name="food_description" required ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Food Type</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="food_type" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Food Feature One</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="food_feature_one" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Food Feature Two</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="food_feature_two" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Food Feature Three</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="food_feature_three" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Food Feature</label>
+                            <div class="col-sm-9">
+                              <select class="form-control" required name="food_veg_nonveg">
+                                  <option value="Vegitarian" selected>Vegitarian</option>
+                                <option value="veg">Veg</option>
+                                <option value="nonveg">Non Veg</option>
+                                <option value="veg/nonveg">veg/nonveg</option>
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+
+    
+                    </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="butt mr-2 my-4">Save</button>
+                  </div>
+                </div>
+    
+                </form>
+              </div>
+            </div>
+    
+          </div>
+          <br><br>
+    
+    </div>
+<% } %>
+
+
+
+<% if(sub_id==2){ %>
+    <div class="row">
+        <div class="col-md-12">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+          <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+            <div>
+              <% if (successMessage) { %>
+                <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+                  id="notification">
+                  <%= successMessage %>
+                </div>
+                <% } %>
+                  <script>
+                    setTimeout(function () {
+                      // document.getElementById("notification").style.display = "none";
+                      $("#notification").fadeOut(2000);
+                    }, 3000);
+                  </script>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mb-4" style="margin-top: -10px;">
+            <div class="col-md-12 d-flex justify-content-end">
+                <% if(event_data.length>0){ %>
+                    <a href="/admin/view_event_hall_sub_cat_data">
+                        <button class="btn btn-outline-success">View Sub Category data</button>
+                    </a>
+                <% } %>
+                
+            </div>
+        </div>
+        <div class="row" style="margin-top: -12px;">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card corona-gradient-card">
+                <div class="card-body py-0 px-0 px-sm-3">
+                  <div class="row align-items-center" style="padding: 2px;">
+                    <div class="col-4 col-sm-3 col-xl-2">
+    
+                      <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                      <i class="ri-equalizer-line" style="font-size: 30px;"></i>
+    
+                    </div>
+                    <div class="col-5 col-sm-7 col-xl-8 p-0">
+                      <h4 class="mb-1 mb-sm-0 text-dark"
+                        style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Add <%= cat_data[0].cat_name %> Sub Category</h4>
+    
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+    
+                  <!-- create table events_hall (event_hall_id integer primary key auto_increment,event_hall_com_id integer,event_hall_name text,event_hall_price text,event_hall_feature text,event_hall_image text); -->
+
+                  <form class="form-sample" action="/admin/save_event_hall_sub_cat_data" enctype="multipart/form-data" method="post"
+                    id="myform">
+                    <input type="hidden" name="event_hall_com_id" value="<%= cat_data[0].cat_id %>">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Event Hall Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="event_hall_name" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Event Hall Price</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" name="event_hall_price" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Event Hall Image</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="event_hall_image" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Event Hall Feature</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" name="event_hall_feature" required ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="butt mr-2 my-4">Save</button>
+                  </div>
+                </div>
+    
+                </form>
+              </div>
+            </div>
+    
+          </div>
+          <br><br>
+    
+    </div>
+<% } %>
+
+<!-- rooms data  -->
+
+<% if(sub_id==3){ %>
+    <div class="row">
+        <div class="col-md-12">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+          <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+            <div>
+              <% if (successMessage) { %>
+                <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+                  id="notification">
+                  <%= successMessage %>
+                </div>
+                <% } %>
+                  <script>
+                    setTimeout(function () {
+                      // document.getElementById("notification").style.display = "none";
+                      $("#notification").fadeOut(2000);
+                    }, 3000);
+                  </script>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: -12px;">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card corona-gradient-card">
+                <div class="card-body py-0 px-0 px-sm-3">
+                  <div class="row align-items-center" style="padding: 2px;">
+                    <div class="col-4 col-sm-3 col-xl-2">
+    
+                      <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                      <i class="ri-equalizer-line" style="font-size: 30px;"></i>
+    
+                    </div>
+                    <div class="col-5 col-sm-7 col-xl-8 p-0">
+                      <h4 class="mb-1 mb-sm-0 text-dark"
+                        style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Add <%= cat_data[0].cat_name %> Sub Category</h4>
+    
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row mb-4" style="margin-top: -10px;">
+            <div class="col-md-12 d-flex justify-content-end">
+                <% if(room_data.length>0){ %>
+                    <a href="/admin/view_room_sub_cat_data">
+                        <button class="btn btn-outline-success">View Sub Category data</button>
+                    </a>
+                <% } %>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+    
+                    <!-- create table rooms(room_id integer primary key auto_increment,room_name text,room_price decimal,room_type text,room_feature text,room_com_id integer,room_size integer,room_image text) -->
+
+                  <form class="form-sample" action="/admin/save_room_sub_cat_data" enctype="multipart/form-data" method="post"
+                    id="myform">
+                    <input type="hidden" name="room_com_id" value="<%= cat_data[0].cat_id %>">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Room Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="room_name" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Room Price</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" name="room_price" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Room Type</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="room_type" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Room Size</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" name="room_size" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Room Image</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="room_image" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Room Feature</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" name="room_feature" required ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="butt mr-2 my-4">Save</button>
+                  </div>
+                </div>
+    
+                </form>
+              </div>
+            </div>
+    
+          </div>
+          <br><br>
+    
+    </div>
+<% } %>
+
+<!-- wines category data  -->
+
+<% if(sub_id==4){ %>
+    <!-- <h1><%= cat_data[0].cat_name %></h1> -->
+
+    <div class="row">
+        <div class="col-md-12">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+          <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+            <div>
+              <% if (successMessage) { %>
+                <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+                  id="notification">
+                  <%= successMessage %>
+                </div>
+                <% } %>
+                  <script>
+                    setTimeout(function () {
+                      // document.getElementById("notification").style.display = "none";
+                      $("#notification").fadeOut(2000);
+                    }, 3000);
+                  </script>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mb-4" style="margin-top: -10px;">
+            <div class="col-md-12 d-flex justify-content-end">
+                <% if(wine_data.length>0){ %>
+                    <a href="/admin/view_wines_sub_cat_data">
+                        <button class="btn btn-outline-success">View Sub Category data</button>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+        <div class="row" style="margin-top: -12px;">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card corona-gradient-card">
+                <div class="card-body py-0 px-0 px-sm-3">
+                  <div class="row align-items-center" style="padding: 2px;">
+                    <div class="col-4 col-sm-3 col-xl-2">
+    
+                      <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                      <i class="ri-equalizer-line" style="font-size: 30px;"></i>
+    
+                    </div>
+                    <div class="col-5 col-sm-7 col-xl-8 p-0">
+                      <h4 class="mb-1 mb-sm-0 text-dark"
+                        style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Add <%= cat_data[0].cat_name %> Sub Category</h4>
+    
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+    
+                  <!-- create table wines (wines_id integer primary key auto_increment,wines_name varchar(10000),wines_price integer,wines_quantity integer,wine_com_id integer,wines_description text,wines_image text,wines_feature text)  -->
+
+                  <form class="form-sample" action="/admin/save_wines_sub_cat_data" enctype="multipart/form-data" method="post"
+                    id="myform">
+                    <input type="hidden" name="wine_com_id" value="<%= cat_data[0].cat_id %>">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Wine Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="wines_name" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Wine Price</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" name="wines_price" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Wine Image</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="wines_image" required />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Wine Description</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" name="wines_description" required ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Wine Feature</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="wines_feature" required />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="butt mr-2 my-4">Save</button>
+                  </div>
+                </div>
+    
+                </form>
+              </div>
+            </div>
+    
+          </div>
+          <br><br>
+    
+    </div>
+
+
+<% } %>
+<% if(sub_id > 4){ %>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8 text-center border border-white p-5 my-5">
+                <h4>You can't Add Subcategory</h4>
+                <h5 class="text-danger">Please Visit Or Contact To A2Z Info Tech</h5>
+                <p>9665965113 / www.a2zithub.com</p>
+            </div>
+        </div>
+    </div>
+    
+<% } %>
+
+<%- include("footer.ejs") %>

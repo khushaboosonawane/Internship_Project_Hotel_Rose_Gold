@@ -1,0 +1,86 @@
+<%- include("navbar.ejs") %>
+
+<div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+
+            <!-- create table rooms(room_id integer primary key auto_increment,room_name text,room_price decimal,room_type text,room_feature text,room_com_id integer,room_size integer,room_image text) -->
+
+          <form class="form-sample" action="/admin/update_room_sub_cat_data" enctype="multipart/form-data" method="post"
+            id="myform">
+            <input type="hidden" name="room_com_id" value="<%= room_data[0].room_com_id %>">
+            <input type="hidden" name="room_id" value="<%= room_data[0].room_id %>">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Room Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="room_name" value="<%= room_data[0].room_name %>" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Room Price</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" name="room_price" value="<%= room_data[0].room_price %>" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Room Type</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="room_type" value="<%= room_data[0].room_type %>" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Room Size</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" name="room_size" value="<%= room_data[0].room_size %>" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Room Feature</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" name="room_feature" ><%= room_data[0].room_feature %></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Room Image</label>
+                      <div class="col-sm-9">
+                        <input type="file" class="form-control" name="room_image"/>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="/upload_image/room_image/<%= room_data[0].room_image %>" style="height: 150px;width: 150px;" alt="">
+                </div>
+            </div>
+        </div>
+      
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button type="submit" class="butt mr-2 my-4">update</button>
+          </div>
+        </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <br><br>
+
+
+<%- include("footer.ejs") %>

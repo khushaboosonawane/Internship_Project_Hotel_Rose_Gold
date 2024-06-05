@@ -1,0 +1,194 @@
+<%- include("navbar.ejs") %>
+
+    <div class="row">
+        <div class="col-md-12">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+                <div>
+                    <% if (successMessage) { %>
+                        <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+                            id="notification">
+                            <%= successMessage %>
+                        </div>
+                        <% } %>
+
+                            <script>
+                                setTimeout(function () {
+                                    // document.getElementById("notification").style.display = "none";
+                                    $("#notification").fadeOut(2000);
+                                }, 3000);
+                            </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: -12px;">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card corona-gradient-card">
+                <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center" style="padding: 2px;">
+                        <div class="col-4 col-sm-3 col-xl-2">
+
+                            <i class="ri-home-8-line" style="font-size: 30px;"></i>
+
+                        </div>
+                        <div class="col-5 col-sm-7 col-xl-8 p-0">
+                            <h4 class="mb-1 mb-sm-0 text-dark"
+                                style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Rooms
+                                Information</h4>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- create table rooms_and_sweets(room_id integer primary key auto_increment,rooms_image text,room_name varchar(2000),room_price integer,room_type varchar(2000)) -->
+
+                    <form class="form-sample" action="/admin/save_home_room_data" enctype="multipart/form-data"
+                        method="post" id="myform">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Room Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="room_name" required
+                                            placeholder="Enter Room Name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Room Type</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="room_type" required
+                                            placeholder="Enter Room Type" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Room Price</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="room_price" required
+                                            placeholder="Enter Room Price" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label"> Select Room Image</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" class="form-control" name="rooms_image" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="butt mr-2 my-4">Save</button>
+                    </div>
+                </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Home Room Information</h4>
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th> Update Data </th>
+                                        <th> SrNo </th>
+                                        <th> Room Name </th>
+                                        <th> Room Type </th>
+                                        <th> Room Price </th>
+                                        <th> Room Image </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if(home_room_data.length>0){ %>
+                                        <% for(var i=0;i<home_room_data.length;i++){ %>
+
+                                            <tr>
+                                                <td>
+                                                    <a href="/admin/edit_home_room_data/<%= home_room_data[i].room_id %>"
+                                                        style="text-decoration: none;">
+                                                        <button type="button" class="btn btn-outline-twitter"
+                                                            style="padding: 10px;text-align: center;">
+                                                            <i class="ri-edit-box-line"></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="/admin/delete_home_room_data?id=<%= home_room_data[i].room_id %>"
+                                                        style="text-decoration: none;">
+                                                        <button type="button" class="btn btn-outline-youtube"
+                                                            style="padding: 10px;text-align: center;"
+                                                            onclick="return confirm('Are You Sure To Delete Data')">
+                                                            <i class="ri-delete-bin-line"></i>
+                                                        </button>
+                                                    </a>
+
+                                                </td>
+                                                <td>
+                                                    <%= i+1 %>
+                                                </td>
+                                                <td>
+                                                    <%= home_room_data[i].room_name %>
+                                                </td>
+                                                <td>
+                                                    <%= home_room_data[i].room_type %>
+                                                </td>
+                                                <td>
+                                                    <%= home_room_data[i].room_price %> &#x20B9;
+                                                </td>
+
+                                                <td class="py-1">
+                                                    <img src="/upload_image/home_room_image/<%= home_room_data[i].rooms_image %>"
+                                                        alt="image" />
+                                                </td>
+                                            </tr>
+
+                                            <% } %>
+                                                <% }else{ %>
+                                                    <tr style="text-align: center;">
+                                                        <td colspan="6">Data Not Found</td>
+                                                    </tr>
+                                                    <% } %>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <%- include("footer.ejs") %>

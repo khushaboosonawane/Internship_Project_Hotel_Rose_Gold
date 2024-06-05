@@ -1,0 +1,211 @@
+<%- include("navbar.ejs") %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+        <div>
+          <% if (successMessage) { %>
+            <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+              id="notification">
+              <%= successMessage %>
+            </div>
+            <% } %>
+              <script>
+                setTimeout(function () {
+                  // document.getElementById("notification").style.display = "none";
+                  $("#notification").fadeOut(2000);
+                }, 3000);
+              </script>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: -12px;">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card corona-gradient-card">
+            <div class="card-body py-0 px-0 px-sm-3">
+              <div class="row align-items-center" style="padding: 2px;">
+                <div class="col-4 col-sm-3 col-xl-2">
+
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <i class="ri-star-line" style="font-size: 30px;"></i>
+
+                </div>
+                <div class="col-5 col-sm-7 col-xl-8 p-0">
+                  <h4 class="mb-1 mb-sm-0 text-dark"
+                    style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Update <%= sp_off_data[0].special_offer_name %> Information</h4>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+
+              <!-- create table special_offer (special_id integer primary key auto_increment,special_offer_name varchar(20000),special_offer_price decimal,special_offer_percentage integer,special_offer_image text) -->
+              <!-- create table special_offer_details(spd_id integer primary key auto_increment,special_offer_description text,check_in_details text,check_out_details text,special_checkin_instruction text,pets varchar(1000),allowed_person integer,wifi_con varchar(1000),room_size integer,breakfast varchar(100)) -->
+
+              <form class="form-sample" action="/admin/update_special_offer_data" enctype="multipart/form-data" method="post"
+                id="myform">
+                <input type="hidden" name="special_id" id="" value="<%= sp_off_data[0].special_id %>">
+                <input type="hidden" name="spd_id" id="" value="<%= sp_off_data[0].spd_id %>">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Special Offer Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="special_offer_name" placeholder="Special Offer Name" value="<%= sp_off_data[0].special_offer_name %>" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Special Offer Price</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" name="special_offer_price" value="<%= sp_off_data[0].special_offer_price %>" placeholder="Special Offer Price" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Special Offer In Percentage</label>
+                      <div class="col-sm-9">
+                        <input type="Number" class="form-control" name="special_offer_percentage" placeholder="Special Offer Percentage" value="<%= sp_off_data[0].special_offer_percentage %>" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Special Offer Image</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="special_offer_image"/>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/upload_image/special_offer_image/<%= sp_off_data[0].special_offer_image %>" alt="" style="height: 150px;width: 150px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="my-3 border border-danger p-3 text-white text-center"> <span class="text-danger lead">**</span>  <u>Special Offer Deatils</u> <span class="text-danger lead">**</span> </h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Special Offer Description</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" name="special_offer_description" placeholder="Enter Special Offer Details"><%= sp_off_data[0].special_offer_description %></textarea>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Check In Deatils</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="check_in_details" placeholder="Check In Details" value="<%= sp_off_data[0].check_in_details %>" />
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Check Out Deatils</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="check_out_details" placeholder="Check Out Details" value="<%= sp_off_data[0].check_out_details %>" />
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Special Check In Instruction</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" name="special_checkin_instruction" placeholder="Enter Special Check In Instruction"><%= sp_off_data[0].special_checkin_instruction %></textarea>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Room Size</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="room_size" placeholder="Enter Room Size In Sq/ft" value="<%= sp_off_data[0].room_size %>" />
+                          </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Allowed Person</label>
+                          <div class="col-sm-9">
+                            <input type="number" class="form-control" name="allowed_person" placeholder="Enter Allowed Person In Rooms" value="<%= sp_off_data[0].allowed_person %>" />
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Pets</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" name="pets">
+                                <option value="Not Allowed" selected><%= sp_off_data[0].pets %></option>
+                              <option value="Allowed">Allowed</option>
+                              <option value="Not Allowed">Not Allowed</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Wifi Connection</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" name="wifi_con">
+                                <option value="Not Available" selected><%= sp_off_data[0].wifi_con %></option>
+                              <option value="Available">Available</option>
+                              <option value="Not Available">Not Available</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">BreakFast</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" name="breakfast">
+                                <option value="Not Available" selected><%= sp_off_data[0].breakfast %></option>
+                              <option value="Available">Available</option>
+                              <option value="Not Available">Not Available</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="butt mr-2 my-4">Update</button>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <br><br>
+
+     
+      
+
+
+
+
+      <%- include("footer.ejs") %>

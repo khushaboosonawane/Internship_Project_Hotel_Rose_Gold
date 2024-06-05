@@ -1,0 +1,227 @@
+<%- include("navbar.ejs") %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+        <div>
+          <% if (successMessage) { %>
+            <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+              id="notification">
+              <%= successMessage %>
+            </div>
+            <% } %>
+              <script>
+                setTimeout(function () {
+                  // document.getElementById("notification").style.display = "none";
+                  $("#notification").fadeOut(2000);
+                }, 3000);
+              </script>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: -12px;">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card corona-gradient-card">
+            <div class="card-body py-0 px-0 px-sm-3">
+              <div class="row align-items-center" style="padding: 2px;">
+                <div class="col-4 col-sm-3 col-xl-2">
+
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <i class="ri-group-line" style="font-size: 30px;"></i>
+
+                </div>
+                <div class="col-5 col-sm-7 col-xl-8 p-0">
+                  <h4 class="mb-1 mb-sm-0 text-dark"
+                    style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Team Member Information</h4>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+
+              <!-- create table team_member (tem_member_id integer primary key auto_increment,team_member_name varchar(20000),team_member_image text,team_member_mobile varchar(11),team_member_lidin text, team_facebook_link text,team_member_email text); -->
+              <form class="form-sample" action="/admin/save_team_member_data" enctype="multipart/form-data" method="post"
+                id="myform">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Team Memeber Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="team_member_name" placeholder="Enter Team Member Name" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Team Member Designation</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="team_member_desi" placeholder="Enter Team Member Designation" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Team Member Mobile Number</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" name="team_member_mobile" placeholder="Enter Team Member Mobile" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Team Member Linkedin Link</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="team_member_lidin" placeholder="Enter Team Linkedin Account" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Team Member Facebook Link</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="team_facebook_link" placeholder="Enter Team Facebook Account" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Team Member Eamil</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="team_member_email" placeholder="Enter Team Email Address" required />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Select Team Member Image</label>
+                      <div class="col-sm-9">
+                        <input type="file" class="form-control" name="team_member_image" placeholder="Enter Team Email Address" required />
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="butt mr-2 my-4">Save</button>
+              </div>
+            </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <br><br>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Slider Information</h4>
+                </p>
+                <div class="table-responsive">
+                  <table class="table table-hover table-bordered text-center">
+                    <thead>
+                      <tr>
+                        <th> Update Data </th>
+                        <th> SrNo </th>
+                        <th> Team Member Name </th>
+                        <th> Team Member Designation </th>
+                        <th> Team Member Mobile </th>
+                        <th> Team Member Email </th>
+                        <th> Team Member Linkedin Link </th>
+                        <th> Team Member Facebook </th>
+                        <th> Team Member Image </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% if(team_member_data.length>0){ %>
+                        <% for(var i=0;i<team_member_data.length;i++){ %>
+
+                          <tr>
+                            <td>
+                              <a href="/admin/edit_team_member_data/<%= team_member_data[i].tem_member_id %>"
+                                style="text-decoration: none;">
+                                <button type="button" class="btn btn-outline-twitter btn-sm"
+                                  style="padding: 10px;text-align: center;">
+                                  <i class="ri-edit-box-line"></i>
+                                </button>
+                              </a>
+                              <a href="/admin/delete_team_member_data?id=<%= team_member_data[i].tem_member_id %>"
+                                style="text-decoration: none;">
+                                <button type="button" class="btn btn-outline-youtube btn-sm"
+                                  style="padding: 10px;text-align: center;"
+                                  onclick="return confirm('Are You Sure To Delete Data')">
+                                  <i class="ri-delete-bin-line"></i>
+                                </button>
+                              </a>
+
+                            </td>
+                            <td>
+                              <%= i+1 %>
+                            </td>
+                            <td>
+                              <%= team_member_data[i].team_member_name %>
+                            </td>
+                            <td>
+                              <%= team_member_data[i].team_member_desi %>
+                            </td>
+                            <td>
+                              <%= team_member_data[i].team_member_mobile %>
+                            </td>
+                            <td>
+                                <%= team_member_data[i].team_member_email %>
+                              </td>
+                              <td>
+                                <%= team_member_data[i].team_member_lidin %>
+                              </td>
+                              <td>
+                                <%= team_member_data[i].team_facebook_link %>
+                              </td>
+                              
+
+                            <td class="py-1">
+                              <img src="/upload_image/team_member_image/<%= team_member_data[i].team_member_image %>" alt="image" />
+                            </td>
+                          </tr>
+
+                          <% } %>
+                            <% }else{ %>
+                              <tr style="text-align: center;">
+                                <td colspan="8">Data Not Found</td>
+                              </tr>
+                              <% } %>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    
+
+
+
+      <%- include("footer.ejs") %>

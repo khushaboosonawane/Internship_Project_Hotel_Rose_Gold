@@ -1,0 +1,68 @@
+<%- include("navbar.ejs") %>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-start">
+            <a href="/admin/add_sub_cat_data/<%= wines_data[0].wine_com_id %>"> <button class="btn btn-outline-success">Go To Back</button></a>
+           
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-responsive table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>update data</th>
+                        <th>srno</th>
+                        <th>Wines Name</th>
+                        <th>Wines Price</th>
+                        <th>Wines Feature</th>
+                        <th>Wines Image</th>
+                        <th>Wines Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(wines_data.length>0){ %>
+                        <% for(var i=0;i<wines_data.length;i++){ %>
+                            <tr>
+                                <td>
+                                    <a href="/admin/edit_wine_sub_cat_data/<%= wines_data[i].wines_id %>"
+                                        style="text-decoration: none;">
+                                        <button type="button" class="btn btn-outline-twitter btn-sm"
+                                          style="padding: 10px;text-align: center;">
+                                          <i class="ri-edit-box-line"></i>
+                                        </button>
+                                      </a>
+                                      <a href="/admin/delete_wine_sub_cat_data?id=<%= wines_data[i].wines_id %>"
+                                        style="text-decoration: none;">
+                                        <button type="button" class="btn btn-outline-youtube btn-sm"
+                                          style="padding: 10px;text-align: center;"
+                                          onclick="return confirm('Are You Sure To Delete Data')">
+                                          <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                      </a>
+                                </td>
+                                <td><%= i+1 %></td>
+                                <td><%= wines_data[i].wines_name %></td>
+                                <td><%= wines_data[i].wines_price %></td>
+                                <td><%= wines_data[i].wines_feature %></td>
+                                <td><img src="/upload_image/wine_images/<%= wines_data[i].wines_image %>" alt=""></td>
+                                <td><%= wines_data[i].wines_description %></td>
+                            </tr>
+                        <% } %>
+                        
+                    <% }else{ %>
+                        <tr>
+                            <td colspan="7" class="text-center">No Data Found</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>

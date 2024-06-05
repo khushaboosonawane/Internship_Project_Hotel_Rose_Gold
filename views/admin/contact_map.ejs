@@ -1,0 +1,92 @@
+<%- include("navbar.ejs") %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+        <div>
+          <% if (successMessage) { %>
+            <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+              id="notification">
+              <%= successMessage %>
+            </div>
+            <% } %>
+              <script>
+                setTimeout(function () {
+                  // document.getElementById("notification").style.display = "none";
+                  $("#notification").fadeOut(2000);
+                }, 3000);
+              </script>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: -12px;">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card corona-gradient-card">
+            <div class="card-body py-0 px-0 px-sm-3">
+              <div class="row align-items-center" style="padding: 2px;">
+                <div class="col-4 col-sm-3 col-xl-2">
+
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <i class="ri-map-pin-line" style="font-size: 30px;"></i>
+
+                </div>
+                <div class="col-5 col-sm-7 col-xl-8 p-0">
+                  <h4 class="mb-1 mb-sm-0 text-dark"
+                    style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Contact Map Information</h4>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+
+                <!-- create table contact_map(con_id integer primary key auto_increment,con_link text); -->
+              <form class="form-sample" action="/admin/update_contact_map" enctype="multipart/form-data" method="post"
+                id="myform">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">contact Map Link</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="con_link" value="<%= con_data[0].con_link %>" />
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="butt mr-2 my-4">Update</button>
+              </div>
+            </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <br><br>
+
+    
+      
+    
+
+
+
+
+      <%- include("footer.ejs") %>

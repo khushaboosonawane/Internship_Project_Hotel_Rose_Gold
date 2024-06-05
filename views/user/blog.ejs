@@ -1,0 +1,74 @@
+<%- include("navbar.ejs") %>
+
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/bolg_banner_image.jpg" style="background-attachment: fixed;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Blog</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>Blog</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
+
+	
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title">Blogs</div>
+            <div class="section-line"></div>
+            <div class="section-subtitle">The Rose Gold Hotel</div>
+        </div>
+        <% for(var i=0;i<blog_data.length;i++){ %>
+            <div class="col-md-4">
+                <div class="card">
+                 <div class="card-header p-0 m-0">
+                     <img src="/upload_image/blog_image/<%= blog_data[i].blog_image %>" alt="" style="height: 200px;width: 100%;object-fit: cover;" class="img-fluid">
+                 </div>
+                 <div class="card-body text-center">
+                     <h2 class="card-title"><%= blog_data[i].blog_title %></h2>
+                     <p><%= blog_data[i].blog_desc %></p>
+                 </div>
+                </div>
+             </div>
+        <% } %>
+        
+    </div>
+</div>
+<br><br><br>
+
+<!-- Clients -->
+<section class="clients">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="section-title">View Blog</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+            <div class="col-md-12">
+            <div class="owl-carousel owl-theme ">
+                <% for(var i=0;i<blog_data.length;i++){ %>
+                    <div class="clients-logo p-4 col" style="border: 1px solid rgba(182,107,121,0.2);">
+                        <img src="/upload_image/blog_image/<%= blog_data[i].blog_image %>" style="max-height: 300px;max-width: 300px;object-fit: cover;" alt="client_logo_image" class=" img-fluid" >
+                        <br>
+                        <h2 class="text-center client_name text-md-sm my-4" style="color: #d2ae6b ;"><%= blog_data[i].blog_title %></h2>
+                        <p class="text-center">
+                            <%= blog_data[i].blog_desc %>
+                        </p>
+                    </div>
+                <% } %>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<br><br>
+
+<%- include("footer.ejs") %>

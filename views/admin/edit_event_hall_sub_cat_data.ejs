@@ -1,0 +1,125 @@
+
+<%- include("navbar.ejs") %>
+<div class="row">
+    <div class="col-md-12">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <div style="position: absolute;top: -40px;z-index: 999;left: 600px;">
+        <div>
+          <% if (successMessage) { %>
+            <div style="color: white;border: 1px solid #b66b79;padding: 20px;z-index: 999;background-color: #b66b79;"
+              id="notification">
+              <%= successMessage %>
+            </div>
+            <% } %>
+              <script>
+                setTimeout(function () {
+                  // document.getElementById("notification").style.display = "none";
+                  $("#notification").fadeOut(2000);
+                }, 3000);
+              </script>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mb-4" style="margin-top: -10px;">
+        <div class="col-md-12 d-flex justify-content-end">
+            <% if(event_data.length>0){ %>
+                <a href="/admin/view_event_hall_sub_cat_data">
+                    <button class="btn btn-outline-success">View Sub Category data</button>
+                </a>
+            <% } %>
+            
+        </div>
+    </div>
+    <div class="row" style="margin-top: -12px;">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card corona-gradient-card">
+            <div class="card-body py-0 px-0 px-sm-3">
+              <div class="row align-items-center" style="padding: 2px;">
+                <div class="col-4 col-sm-3 col-xl-2">
+
+                  <!-- <i class="ri-equalizer-line" style="font-size: 30px;"></i> -->
+                  <i class="ri-equalizer-line" style="font-size: 30px;"></i>
+
+                </div>
+                <div class="col-5 col-sm-7 col-xl-8 p-0">
+                  <h4 class="mb-1 mb-sm-0 text-dark"
+                    style="margin-left: -57px;margin-top: 5px;text-transform: capitalize;">Update <%= cat_data[0].cat_name %> Sub Category</h4>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+
+              <!-- create table events_hall (event_hall_id integer primary key auto_increment,event_hall_com_id integer,event_hall_name text,event_hall_price text,event_hall_feature text,event_hall_image text); -->
+
+              <form class="form-sample" action="/admin/update_event_hall_sub_cat_data" enctype="multipart/form-data" method="post"
+                id="myform">
+                <input type="hidden" name="event_hall_com_id" value="<%= event_data[0].event_hall_com_id %>">
+                <input type="hidden" name="event_hall_id" value="<%= event_data[0].event_hall_id %>" id="">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Event Hall Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="event_hall_name" value="<%= event_data[0].event_hall_name %>" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Event Hall Price</label>
+                      <div class="col-sm-9">
+                        <input type="number" class="form-control" name="event_hall_price" value="<%= event_data[0].event_hall_price %>" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Event Hall Feature</label>
+                      <div class="col-sm-9">
+                        <textarea class="form-control" name="event_hall_feature" ><%= event_data[0].event_hall_feature %></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Event Hall Image</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="event_hall_image"/>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/upload_image/event_hall_image/<%= event_data[0].event_hall_image %>" style="height: 150px;width: 150px;" alt="">
+                    </div>
+                </div>
+                
+            </div>
+            
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="butt mr-2 my-4">Update</button>
+              </div>
+            </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <br><br>
+
+</div>
+
+<%- include("footer.ejs") %>

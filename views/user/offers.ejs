@@ -1,0 +1,232 @@
+<%- include("navbar.ejs") %>
+  <!-- Header Banner -->
+  <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="8" data-background="/img/offer_banner1.jpeg" style="background-attachment: fixed;object-fit: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center caption mt-90">
+                <h1>Offers</h1>
+                <h5><a href="/" style="text-decoration: none;color: white;">Home</a><b style="color: white;">/</b>Offers</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Rooms -->
+ <section class="rooms1 section-padding bg-cream" data-scroll-index="1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Special Offers</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme">
+                    <% if(special_offer.length > 0){ %>
+                        <% for(var i=0;i<special_offer.length;i++){ %>
+                            <div class="item">
+                                <div class="position-re o-hidden"> 
+                                    <img src="/upload_image/special_offer_image/<%= special_offer[i].special_offer_image %>" alt="" style="object-fit: cover;height: 400px;width: 100%;"> 
+                                </div> 
+                                
+                                <div class="con">
+                                    <h6><a href="room-details.html"><%= special_offer[i].special_offer_price %>.RS / <%= special_offer[i].special_offer_percentage %> % </a></h6>
+                                    <h5><%= special_offer[i].special_offer_name %></h5>
+                                    <div class="line"></div>
+                                    <div class="row facilities" style="position: relative;top: 20px;">
+                                        <div class="col col-md-7">
+                                            <ul>
+                                                <li><a href="/book_special_offer/<%= special_offer[i].special_id %>/<%= special_offer[i].spd_id %>"><button class="btn" style="background-color: #F082AC;color: white;">Book Now</button></a></li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="col col-md-5 text-end ">
+                                            <div class="permalink">
+                                                <a href="/special_offer_details/<%= special_offer[i].special_id %>/<%= special_offer[i].spd_id %>" title="view Datails">Details<i class="ti-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }else{ %>
+                        <div class="item">
+                            <div class="position-re o-hidden"> 
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kmtTXo5Nv6fTf2gI7PgtGfmvN9j1Rot5YDtE6PZ109wmB_-03pC-DixJLeP6S9mINoU&usqp=CAU" alt=""> 
+                            </div> 
+                            
+                            <div class="con">
+                                <h6><a href="room-details.html">150$ / Night</a></h6>
+                                <h5><a href="room-details.html">Junior Suite</a> </h5>
+                                <div class="line"></div>
+                                <div class="row facilities" style="position: relative;top: 20px;">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><a href=""><button class="btn" style="background-color: #F082AC;color: white;">Book Now</button></a></li>
+                                        </ul>
+                                        
+                                    </div>
+                                    <div class="col col-md-5 text-end ">
+                                        <div class="permalink">
+                                            <a href="room-details.html" title="view Datails">Details<i class="ti-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kmtTXo5Nv6fTf2gI7PgtGfmvN9j1Rot5YDtE6PZ109wmB_-03pC-DixJLeP6S9mINoU&usqp=CAU" alt=""> </div> <span class="category"><a href="rooms2.html">Book</a></span>
+                            <div class="con">
+                                <h6><a href="room-details.html">200$ / Night</a></h6>
+                                <h5><a href="room-details.html">Family Room</a></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><i class="flaticon-bed"></i></li>
+                                            <li><i class="flaticon-bath"></i></li>
+                                            <li><i class="flaticon-breakfast"></i></li>
+                                            <li><i class="flaticon-towel"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col col-md-5 text-end">
+                                        <div class="permalink"><a href="room-details.html">Details <i class="ti-arrow-right"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kmtTXo5Nv6fTf2gI7PgtGfmvN9j1Rot5YDtE6PZ109wmB_-03pC-DixJLeP6S9mINoU&usqp=CAU" alt=""> </div> <span class="category"><a href="rooms2.html">Book</a></span>
+                            <div class="con">
+                                <h6><a href="room-details.html">250$ / Night</a></h6>
+                                <h5><a href="room-details.html">Double Room</a></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><i class="flaticon-bed"></i></li>
+                                            <li><i class="flaticon-bath"></i></li>
+                                            <li><i class="flaticon-breakfast"></i></li>
+                                            <li><i class="flaticon-towel"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col col-md-5 text-end">
+                                        <div class="permalink"><a href="room-details.html">Details <i class="ti-arrow-right"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kmtTXo5Nv6fTf2gI7PgtGfmvN9j1Rot5YDtE6PZ109wmB_-03pC-DixJLeP6S9mINoU&usqp=CAU" alt=""> </div> <span class="category"><a href="rooms2.html">Book</a></span>
+                            <div class="con">
+                                <h6><a href="room-details.html">300$ / Night</a></h6>
+                                <h5><a href="room-details.html">Deluxe Room</a></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><i class="flaticon-bed"></i></li>
+                                            <li><i class="flaticon-bath"></i></li>
+                                            <li><i class="flaticon-breakfast"></i></li>
+                                            <li><i class="flaticon-towel"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col col-md-5 text-end">
+                                        <div class="permalink"><a href="room-details.html">Details <i class="ti-arrow-right"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kmtTXo5Nv6fTf2gI7PgtGfmvN9j1Rot5YDtE6PZ109wmB_-03pC-DixJLeP6S9mINoU&usqp=CAU" alt=""> </div> <span class="category"><a href="rooms2.html">Book</a></span>
+                            <div class="con">
+                                <h6><a href="room-details.html">350$ / Night</a></h6>
+                                <h5><a href="room-details.html">Superior Room</a></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><i class="flaticon-bed"></i></li>
+                                            <li><i class="flaticon-bath"></i></li>
+                                            <li><i class="flaticon-breakfast"></i></li>
+                                            <li><i class="flaticon-towel"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col col-md-5 text-end">
+                                        <div class="permalink"><a href="room-details.html">Details <i class="ti-arrow-right"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kmtTXo5Nv6fTf2gI7PgtGfmvN9j1Rot5YDtE6PZ109wmB_-03pC-DixJLeP6S9mINoU&usqp=CAU" alt=""> </div> <span class="category"><a href="rooms2.html">Book</a></span>
+                            <div class="con">
+                                <h6><a href="room-details.html">400$ / Night</a></h6>
+                                <h5><a href="room-details.html">Wellness Room</a></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><i class="flaticon-bed"></i></li>
+                                            <li><i class="flaticon-bath"></i></li>
+                                            <li><i class="flaticon-breakfast"></i></li>
+                                            <li><i class="flaticon-towel"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col col-md-5 text-end">
+                                        <div class="permalink"><a href="room-details.html">Details <i class="ti-arrow-right"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Rooms -->
+    <section class="rooms1 section-padding" data-scroll-index="1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">Offers</div>
+                    <div class="section-line"></div>
+                    <div class="section-subtitle">The Rose Gold Hotel</div>
+                </div>
+            </div>
+            <div class="row">
+                <% for(var i=0;i<offer_data.length;i++){ %>
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div class="position-re o-hidden"> 
+                                <img src="/upload_image/offer_image/<%= offer_data[i].offer_image %>" alt="" style="height: 350px;width: 100%;object-fit: cover;"> 
+                            </div> 
+                            <span class="category"><a href="/book_offer_data/<%= offer_data[i].offer_id %>/<%= offer_data[i].offer_det_id %>">Book</a></span>
+                            <div class="con">
+                                <h6><%= offer_data[i].offer_price %> / <%= offer_data[i].offer_price_percentage %> %</h6>
+                                <h5><%= offer_data[i].offer_name %></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-5 text-end">
+                                        <div class="permalink"><a href="/book_offer_details/<%= offer_data[i].offer_id %>/<%= offer_data[i].offer_det_id %>">Details <i class="ti-arrow-right"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+               
+            </div>
+        </div>
+    </section>
+
+
+
+<%- include("footer.ejs") %>

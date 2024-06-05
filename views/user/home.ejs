@@ -1,0 +1,463 @@
+<%- include("navbar.ejs") %>
+
+<!-- Slider -->
+<header class="header slider-fade">
+    <div class="owl-carousel owl-theme">
+        <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+        <% for(var i=0;i<slider_data.length;i++){ %>
+            <div class="text-center item bg-img" data-overlay-dark="8" data-background="/upload_image/slider_image/<%= slider_data[i].slider_image %>">
+                <div class="v-middle caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                               
+                                <h4 style="text-transform: uppercase;"><%= slider_data[i].slider_subtitle %></h4>
+                                <h1 style="text-transform: uppercase;"><%= slider_data[i].slider_maintitle %></h1>
+                                <div class=" mt-30 mb-30">
+                                     <!-- <a href="#" data-scroll-nav="1"><span>Rooms & Suites</span></a>  -->
+                                     <a href="/rooms" data-scroll-nav="1"><span class="btn_room">Rooms & Suites</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+       
+    </div>
+   
+</header>
+
+
+<!-- Reservation & Booking Form -->
+<!-- <section class="testimonials" style="background: linear-gradient(37deg, rgba(182,107,121,1) 37%, rgba(210,174,107,1) 75%);">
+    <div class="background bg-img bg-fixed section-padding pb-0">
+        <div class="container">
+            <div class="row d-flex justify-content-between">
+
+                Reservation
+
+                <div class="col-md-12 my-4">
+                   <h1 style="color:white">Hotel Booking</h1>
+                   <span style="text-transform: uppercase;margin-top: -10px;color: black;letter-spacing: 3px;" class="mb-3">the rose gold hotel</span>
+                   <div style="margin: 0px 5px;height: 1px;width: 400px;background: black;"></div>
+                </div>
+                <div class="col-md-5 col-lg-5  mb-30 mt-30 booking-box-desc">
+                    
+                    <h5><%= hotel_data[0].about_description %></h5>
+                    <div class="reservations mb-30">
+                        <div class="icon color-1"><span class="flaticon-call"></span></div>
+                        <div class="text">
+                            <p class="color-1">Reservation</p> <a class="color-1" href="tel:855-100-4444"><%= hotel_data[0].hotel_contact_number %></a>
+                        </div>
+                    </div>
+                </div>
+                <br><br><br><br>
+                
+                Booking From
+                <div class="col-md-5  col-lg-5 offset-md-2" style="margin-top: -211px;">
+                    <div class="booking-box">
+                        <div class="head-box">
+                            <h6>Rooms & Suites</h6>
+                            <h4>Hotel Booking Form</h4>
+                        </div>
+                        <div class="booking-inner clearfix">
+                            <form action="https://duruthemes.com/demo/html/cappa/demo1-light/rooms2.html" class="form1 clearfix">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input1_wrapper">
+                                            <label>Check in</label>
+                                            <div class="input1_inner">
+                                                <input type="text" class="form-control input datepicker" placeholder="Check in">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="input1_wrapper">
+                                            <label>Check out</label>
+                                            <div class="input1_inner">
+                                                <input type="text" class="form-control input datepicker" placeholder="Check out">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="select1_wrapper">
+                                            <label>Adults</label>
+                                            <div class="select1_inner">
+                                                <select class="select2 select" style="width: 100%">
+                                                    <option value="0">Adults</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="select1_wrapper">
+                                            <label>Children</label>
+                                            <div class="select1_inner">
+                                                <select class="select2 select" style="width: 100%">
+                                                    <option value="0">Children</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn-form1-submit mt-15">Book Room</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<br><br><br>
+
+<!-- About -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">About</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+            <div class="col-md-6 mb-30 mt-5 animate-box" data-animate-effect="fadeInUp">
+                
+                <p style="font-size: 18px;"><%= about_data[0].about_description %></p>
+                
+                
+            </div>
+            <div class="col col-md-3 animate-box about_image" data-animate-effect="fadeInUp">
+                <img src="/upload_image/about_images/<%= about_data[0].about_first_image %>" alt="" class="mt-90 mb-30">
+            </div>
+            <div class="col col-md-3 animate-box about_image" data-animate-effect="fadeInUp">
+                <img src="/upload_image/about_images/<%= about_data[0].about_second_image %>" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Rooms -->
+<section class="rooms1 section-padding bg-cream" data-scroll-index="1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Rooms & Suites</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <% for(var i=0;i<3;i++){ %>
+                <div class="col-md-4">
+                    <div class="item">
+                        <div class="position-re o-hidden" style="border-radius: 10px;"> 
+                            <img src="/upload_image/home_room_image/<%= home_room_data[i].rooms_image %>" alt="" style="height: 500px;width: 100%;object-fit: cover;"> 
+                        </div> 
+                        <div class="con">
+                            <h6><a href="/room_details/<%= home_room_data[i].room_id %>"><%= home_room_data[i].room_price %> &#x20B9; / <%= home_room_data[i].room_type %></a></h6>
+                            <h5><a href="/room_details/<%= home_room_data[i].room_id %>"><%= home_room_data[i].room_name %></a> </h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                
+                                <div class="col col-md-12 text-start">
+                                    <div class="permalink">
+                                        <!-- <a href="room-details.html">Details <i class="ti-arrow-right"></i></a> -->
+                                        <a href="/room_details/<%= home_room_data[i].room_id %>"> 
+                                            <button class="book_now" style="position: relative;top: 10px;left: 10px;">Details <i class="ti-arrow-right"></i> </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            
+
+            
+        </div>
+    </div>
+</section>
+<!-- Pricing -->
+<section class="pricing section-padding py-5" style="background:linear-gradient(37deg, rgba(182,107,121,1) 41%, rgba(210,174,107,1) 82%);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title"><span>Extra Services</span></div>
+                <div class="price-line"></div>
+                <div class="section-subtitle" style="color: white;">Rose Gold Hotel</div>
+            </div>
+            
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9">
+                <div class="owl-carousel owl-theme py-5">
+
+                    <% for(var i=0;i<extra_service.length;i++){ %>
+                        <div class="pricing-card" style="border-radius: 30px;">
+                            <img src="/upload_image/extra_service_image/<%= extra_service[i].extra_service_slider_image %>" alt="" style="height: 250px;width: 100%;object-fit: cover;">
+                            <div class="desc">
+                                <div class="name"><%= extra_service[i].extra_service_title %></div>
+                                <div class="amount"><i class="fa-solid fa-indian-rupee-sign" style="font-size: 25px;"></i> &nbsp;<%= extra_service[i].extra_service_price %><span>/ <%= extra_service[i].extra_service_feature %></span></div>
+                                <ul class="list-unstyled list">
+                                    <li><i class="ti-check"></i> <%= extra_service[i].extra_service_one %></li>
+                                    <li><i class="ti-check"></i> <%= extra_service[i].extra_service_two %></li>
+                                    <li><i class="ti-close unavailable"></i><%= extra_service[i].extra_service_three %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Promo Video -->
+<section class="video-wrapper video section-padding bg-img bg-fixed" data-overlay-dark="3" data-background="/upload_image/latest_video/<%= latest_video_data[0].latest_video_background_image %>">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                   <img src="/upload_image/website_logo/<%= hotel_data[0].hotel_logo %>" alt="" style="height: 100px;width: 100px;margin-bottom: 20px;">
+                   <br>
+                   <div class="section-title" style="text-transform: capitalize;"><span><%= latest_video_data[0].latest_video_title %></span></div>
+                    <div class="section-subtitle"><span><%= latest_video_data[0].latest_video_description %></span></div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center col-md-12">
+                    <a class="vid" href="<%= latest_video_data[0].latest_video %>">
+                    <div class="vid-butn">
+                        <span class="icon">
+                            <i class="ti-control-play"></i>
+                        </span>
+                    </div>
+                </a>
+                </div>
+
+            </div>
+        </div>
+</section>
+<!-- Facilties -->
+<section class="facilties section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Hotel Facilities</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">Our Services</div>
+                
+            </div>
+        </div>
+        <div class="row">
+
+            <% for(var i=0;i<hotel_facility_data.length;i++){ %>
+                <div class="col-md-4 text-center" >
+                    <div class="single-facility animate-box" data-animate-effect="fadeInUp" style="border-radius: 10px;">
+                        <!-- <span class="flaticon-world"></span> -->
+                        <span  class="single-facility-number"><%= i+1 %></span>
+                        <h5><%= hotel_facility_data[i].fac_title %></h5>
+                        <p><%= hotel_facility_data[i].fac_description %></p>
+                    </div>
+                </div>
+            <% } %>
+            
+        </div>
+    </div>
+</section>
+<!-- Testiominals -->
+<section class="testimonials">
+    <div class="background bg-img bg-fixed section-padding pb-0" data-background="/img/testimonial_background_image.jpeg" data-overlay-dark="8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center" >
+                    <h2>Testimonials</h2>
+                </div>
+                <div class="col-md-8 offset-md-2">
+                    <div class="testimonials-box">
+                        <div class="head-box">
+                            <!-- <h6>Testimonials</h6> -->
+                            <h4>What Client's Say?</h4>
+                            <div class="line"></div>
+                        </div>
+                        <div class="owl-carousel owl-theme">
+                            <% for(var i=0;i<test_data.length;i++){ %>
+                                <div class="item">
+                                    <p style="font-size: 18px;"><%= test_data[i].test_description %></p>
+                                    <div class="info">
+                                        <div class="author-img"> <img src="/upload_image/testimonial_image/<%= test_data[i].test_img %>" alt="test_img"> </div>
+                                        <div class="cont"> 
+                                            <span>
+                                                <% if(test_data[i].rating <=5 ){ %>
+                                                    <% for(var j=0;j<test_data[i].rating;j++){ %>
+                                                        <i class="star-rating"></i>
+                                                    <% } %>
+                                                <% }else{ %>
+                                                    <i class="star-rating"></i>
+                                                    <i class="star-rating"></i>
+                                                    <i class="star-rating"></i>
+                                                    <i class="star-rating"></i>
+                                                    <i class="star-rating"></i>
+                                                <% } %>
+                                                
+                                            </span>
+                                            <h6><%= test_data[i].test_name %></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services -->
+<section class="services section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">Hotel Discovers</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">Our Services</div>
+                
+            </div>
+        </div>
+        <% for(var i=0;i<hotel_discover_feature.length;i++){ %>
+            <% if( (i%2) == 0){ %>
+                <div class="row">
+                    <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                        <div class="img left">
+                           <img src="/upload_image/hotel_discover_feature/<%= hotel_discover_feature[i].hot_image %>" alt="res_img" style="height: 400px;width: 100%;object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 bg-cream valign animate-box" data-animate-effect="fadeInRight">
+                        <div class="content">
+                            <div class="cont text-left">
+                                
+                                <h4><%= hotel_discover_feature[i].hot_subtitle %></h4>
+                                <p><%= hotel_discover_feature[i].hot_description %></p>
+                                <div> 
+                                    <a href="/dis_feature_data/<%= hotel_discover_feature[i].hot_id %>"> 
+                                        <button class="book_now" style="position: relative;top: 0px;left: 10px;">Learn More</button>
+                                    </a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }else{ %>
+                <div class="row">
+                    <div class="col-md-6 bg-cream p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <h4><%= hotel_discover_feature[i].hot_subtitle %></h4>
+                                <p><%= hotel_discover_feature[i].hot_description%></p>
+                                <div> 
+                                    <a href="/dis_feature_data/<%= hotel_discover_feature[i].hot_id %>"> 
+                                        <button class="book_now" style="position: relative;top: 0px;left: 10px;">Learn More</button>
+                                    </a>
+                                 </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
+                        <div class="img">
+                            <a href="spa-wellness.html"><img src="/upload_image/hotel_discover_feature/<%= hotel_discover_feature[i].hot_image %>" alt="res_img"></a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+        
+    </div>
+</section>
+<!-- News -->
+<section class="news section-padding" style="background: rgba(189,122,132,0.8);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title"><span>Our News</span></div>
+                <div class="price-line"></div>
+                <div class="section-subtitle"><span style="color: white;">Hotel Blog</span></div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme">
+
+                    <% for(var i=0;i<our_new.length;i++){ %>
+                        <div class="item">
+                            <div class="position-re o-hidden"> 
+                                <img src="/upload_image/our_news/<%= our_new[i].our_news_image %>" alt="" style="height: 400px;width: 100%;object-fit: cover;">
+                                <div class="date">
+                                    <span class="text-white"><%= our_new[i].our_news_data  %></span>
+                                </div>
+                            </div>
+                            <div class="con"> <span class="category text-white" >
+                                    <%= our_new[i].our_new_subtitle %>
+                                </span>
+                                <h5 class="text-white"><%= our_new[i].our_news_title %></h5>
+                                <p class="text-dark p-3 text-white">
+                                    <%= our_new[i].our_news_description %>
+                                </p>
+                            </div>
+                        </div>
+                    <% } %>
+
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br><br>
+<!-- Clients -->
+<section class="clients">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="section-title">Clients</div>
+                <div class="section-line"></div>
+                <div class="section-subtitle">The Rose Gold Hotel</div>
+            </div>
+            <div class="col-md-12">
+            <div class="owl-carousel owl-theme ">
+                <% for(var i=0;i<hotel_client.length;i++){ %>
+                    <div class="clients-logo p-4 col" style="border: 1px solid #b66b79;">
+                        <img src="/upload_image/hotel_client_image/<%= hotel_client[i].hot_client_image %>" alt="client_logo_image">
+                        <br>
+                        <h2 class="text-center client_name text-md-sm" style="color: #d2ae6b ;"><%= hotel_client[i].hot_client_name %></h2>
+                        <p class="text-center">
+                            <%= hotel_client[i].hot_client_description %>
+                        </p>
+                    </div>
+                <% } %>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br><br>
+
+<%- include("footer.ejs") %>
